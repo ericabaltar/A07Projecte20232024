@@ -32,6 +32,9 @@ public class MovePJ : MonoBehaviour
         Vector2 dirrecioIndicada = new Vector2(direccioX, direccioY).normalized;
 
         //Trobem posici� actual del personatge:
+
+        //transform.Translate();
+
         Vector2 posNova = transform.position;
         posNova += dirrecioIndicada * _velocidadCaminar * Time.deltaTime;
         posNova.x = Mathf.Clamp(posNova.x, minPantalla.x, maxPantalla.x);
