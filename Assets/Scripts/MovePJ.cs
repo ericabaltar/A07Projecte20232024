@@ -5,11 +5,12 @@ using UnityEngine;
 public class MovePJ : MonoBehaviour
 {
     public float _velocidadCaminar;
+    private SpriteRenderer _spriteRendererPersonaje;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        _spriteRendererPersonaje = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -45,6 +46,15 @@ public class MovePJ : MonoBehaviour
 
         float inputHorizontal = Input.GetAxisRaw("Horizontal") * _velocidadCaminar;
         float inputVertical = Input.GetAxisRaw("Vertical") * _velocidadCaminar;
+
+        if (inputHorizontal > 0)
+        {
+            _spriteRendererPersonaje.flipX = true;
+        }
+        else if (inputHorizontal < 0)
+        {
+            _spriteRendererPersonaje.flipX = false;
+        }
 
     }
 
