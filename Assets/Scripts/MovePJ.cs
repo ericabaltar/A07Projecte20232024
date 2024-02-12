@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovePJ : MonoBehaviour
 {
     public float _velocidadCaminar;
+
     private SpriteRenderer _spriteRendererPersonaje;
 
     // Start is called before the first frame update
@@ -45,7 +46,6 @@ public class MovePJ : MonoBehaviour
 
 
         float inputHorizontal = Input.GetAxisRaw("Horizontal") * _velocidadCaminar;
-        float inputVertical = Input.GetAxisRaw("Vertical") * _velocidadCaminar;
 
         if (inputHorizontal > 0)
         {
