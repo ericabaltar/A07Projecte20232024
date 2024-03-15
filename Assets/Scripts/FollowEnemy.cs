@@ -1,36 +1,30 @@
+using NavMeshPlus.Components;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Follow_AI : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float minDistance;
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform objective;
+    [SerializeField] private NavMeshSurface navMeshSurface2D;
 
+    private NavMeshAgent navMeshAgent;
 
-    private bool isFaccingRight = true;
-
-    void Update()
+   private void Start()
     {
-        if (Vector2.Distance(transform.position, player.position) > minDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        }
-
-        bool isPlayerRight = transform.position.x > player.transform.position.x;
-        Flip(isPlayerRight);
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
 
-    private void Flip(bool isPlayerRight)
+    private void Update()
     {
-        if ((isFaccingRight && !isPlayerRight) || (!isFaccingRight && isPlayerRight))
+        navMeshAgent.SetDestination(objective.position);
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            isFaccingRight = !isFaccingRight;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
+            navMeshSurface2D.BuildNavMeshAsync();
         }
     }
 }
