@@ -1,36 +1,66 @@
+using NavMeshPlus.Components;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class Follow_AI : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float minDistance;
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform objective;
+    [SerializeField] private NavMeshSurface navMeshSurface2D;
+    
 
 
-    private bool isFaccingRight = true;
+    private bool isFacingRight = true;
 
-    void Update()
+
+    private NavMeshAgent navMeshAgent;
+
+
+
+
+
+
+    private void Start()
     {
-        if (Vector2.Distance(transform.position, player.position) > minDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        }
-
-        bool isPlayerRight = transform.position.x > player.transform.position.x;
-        Flip(isPlayerRight);
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
+
+
+    private void Update()
+    {
+        bool isFacingRight = transform.position.x < objective.transform.position.x;
+        Flip(isFacingRight);
+
+
+
+
+        navMeshAgent.SetDestination(objective.position);
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            navMeshSurface2D.BuildNavMeshAsync();
+        }
+    }
+
 
     private void Flip(bool isPlayerRight)
     {
-        if ((isFaccingRight && !isPlayerRight) || (!isFaccingRight && isPlayerRight))
+        if((isFacingRight && isPlayerRight) || (!isFacingRight && !isPlayerRight))
         {
-            isFaccingRight = !isFaccingRight;
+            isFacingRight = !isFacingRight;
             Vector3 scale = transform.localScale;
             scale.x *= -1;
             transform.localScale = scale;
         }
     }
+
+
+
+
 }
+
+
