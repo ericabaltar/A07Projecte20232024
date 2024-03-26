@@ -16,9 +16,9 @@ public class CombatePJ : MonoBehaviour
         barraDeVidaPJ.InicializarBarraVida(vida);
     }
 
-    public void TomarDaño(float daño)
+    public void TomarDano(float dano)
     {
-        vida -= daño;
+        vida -= dano;
         barraDeVidaPJ.CambiarVidaActual(vida);
         if (vida <= 0)
         {
