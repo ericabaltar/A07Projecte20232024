@@ -8,18 +8,18 @@ public class CombatePJ : MonoBehaviour
 
     [SerializeField] private float maximoVida;
 
-    [SerializeField] private BarraDeVidaPJ barraDeVidaPJ;
+    [SerializeField] private BarraDeVida barraDeVida;
 
     private void Start()
     {
         vida = maximoVida;
-        barraDeVidaPJ.InicializarBarraVida(vida);
+        barraDeVida.InicializarBarraVida(vida);
     }
 
     public void TomarDano(float dano)
     {
         vida -= dano;
-        barraDeVidaPJ.CambiarVidaActual(vida);
+        barraDeVida.CambiarVidaActual(vida);
         if (vida <= 0)
         {
             Destroy(gameObject);
