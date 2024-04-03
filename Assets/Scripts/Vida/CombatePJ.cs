@@ -13,7 +13,6 @@ public class CombatePJ : MonoBehaviour
     private void Start()
     {
         vida = maximoVida;
-        barraDeVida.InicializarBarraVida(vida);
     }
 
     public void TomarDano(float dano)

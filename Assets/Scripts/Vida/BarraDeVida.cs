@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BarraDeVida : MonoBehaviour
 {
     private Slider slider;
+    public int cantidadVida;
 
     public void Start()
     {
