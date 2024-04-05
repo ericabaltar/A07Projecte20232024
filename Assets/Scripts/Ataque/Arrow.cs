@@ -21,7 +21,6 @@ public class Arrow : MonoBehaviour
             StartCoroutine(os.GetDamage());
         }
         Destroy(gameObject);
-        
     }
     // Update is called once per frame
     void FixedUpdate()
