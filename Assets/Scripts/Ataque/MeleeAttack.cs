@@ -18,11 +18,16 @@ public class MeleeAttack : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) // Attack on Space key press.
+        if (Input.GetMouseButton(0) && TryGetComponent<CombatePJ>(out CombatePJ cpj)) // Attack on Space key press.
         {
-            animator.SetTrigger("MeleeAttack");
-            Invoke("ActivateHitbox", 0.2f); // Activate hitbox after 0.2 seconds.
-            Invoke("DeactivateHitbox", 0.4f); // Deactivate hitbox after 0.4 seconds.
+            if (cpj.melee)
+            {
+                animator.SetTrigger("MeleeAttack");
+                Invoke("ActivateHitbox", 0.2f); // Activate hitbox after 0.2 seconds.
+                Invoke("DeactivateHitbox", 0.4f); // Deactivate hitbox after 0.4 seconds.
+
+            }
+           
         }
     }
     void ActivateHitbox()

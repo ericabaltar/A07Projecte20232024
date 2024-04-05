@@ -13,6 +13,7 @@ public class PlayerBow : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class PlayerBow : MonoBehaviour
 
     private void CheckFiring()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&& !GetComponentInParent<CombatePJ>().melee)
         {
             GameObject Arrow = Instantiate(ArrowPrefab);
             Arrow.transform.position = spawner.position;

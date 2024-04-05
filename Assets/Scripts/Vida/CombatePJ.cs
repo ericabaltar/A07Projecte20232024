@@ -1,6 +1,8 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class CombatePJ : MonoBehaviour
 {
@@ -10,9 +12,17 @@ public class CombatePJ : MonoBehaviour
 
     [SerializeField] private BarraDeVida barraDeVida;
 
+
+    public bool melee = true;
+
     private void Start()
     {
         vida = maximoVida;
+    }
+    private void Update()
+    {
+        if(UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            melee = !melee;
     }
 
     public void TomarDano(float dano)
