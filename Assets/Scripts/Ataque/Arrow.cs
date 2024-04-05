@@ -22,7 +22,12 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.TryGetComponent<OrcSystem>(out OrcSystem os))
+        {
+            StartCoroutine(os.GetDamage());
+        }
         Destroy(gameObject);
+        
     }
     // Update is called once per frame
     void FixedUpdate()

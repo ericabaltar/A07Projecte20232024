@@ -25,7 +25,7 @@ public class OrcSystem : MonoBehaviour
         StartCoroutine(GetDamage());
     }
    
-    IEnumerator GetDamage()
+    public IEnumerator GetDamage()
     {
         float damageDuration = 0.1f;
         float damage = UnityEngine.Random.Range(1f, 5f);

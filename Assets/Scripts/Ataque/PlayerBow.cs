@@ -49,7 +49,7 @@ public class PlayerBow : MonoBehaviour
             GameObject Arrow = Instantiate(ArrowPrefab);
             Arrow.transform.position = spawner.position;
             Arrow.transform.rotation = spawner.rotation;
-            Destroy(Arrow, 2f);
+            Destroy(Arrow, 50f);
         }
     }
 }
