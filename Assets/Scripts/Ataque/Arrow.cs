@@ -8,12 +8,6 @@ public class Arrow : MonoBehaviour
 
     public float speed = 3;
 
-    [SerializeField] private float vida;
-
-    [SerializeField] private float maximoVida;
-
-    [SerializeField] private BarraDeVida barraDeVida;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,13 +28,5 @@ public class Arrow : MonoBehaviour
     {
         rigidbody.MovePosition(transform.position + transform.right * speed * Time.fixedDeltaTime);
     }
-    public void TomarDano(float dano)
-    {
-        vida -= dano;
-        barraDeVida.CambiarVidaActual(vida);
-        if (vida <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+
 }
