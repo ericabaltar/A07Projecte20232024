@@ -31,7 +31,7 @@ public class Follow_AI : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         bool isFacingRight = transform.position.x < objective.transform.position.x;
         Flip(isFacingRight);

@@ -27,4 +27,11 @@ public class BarraDeVida : MonoBehaviour
         CambiarVidaMaxima(cantidadVida);
         CambiarVidaActual(cantidadVida);
     }
+
+    public void CambiarVida(int VidaActual, int VidaMaxima)
+    {
+        slider.maxValue = VidaMaxima;
+
+        slider.value = VidaActual;
+    }
 }
