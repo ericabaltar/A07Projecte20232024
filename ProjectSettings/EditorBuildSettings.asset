@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SceneLevel1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: "Assets/Scenes/Men\xFA.unity"
+    guid: 89f16c430959fe54fa402d382fec80ff
+  - enabled: 1
+    path: "Assets/Scenes/SettingsMen\xFA.unity"
+    guid: 225e92bb589ed1042b308dc1e3157229
+  - enabled: 1
+    path: Assets/Scenes/Mysteria.unity
+    guid: 0caf2ba7fccaa904e97a056fd4dded1a
   m_configObjects: {}
