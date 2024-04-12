@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 476836}
   - component: {fileID: 476835}
   - component: {fileID: 476834}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 97292355}
   - component: {fileID: 97292354}
   - component: {fileID: 97292353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 135574224}
   - component: {fileID: 135574223}
   - component: {fileID: 135574222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 164912345}
   - component: {fileID: 164912344}
   - component: {fileID: 164912343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1152,7 +1152,7 @@ GameObject:
   - component: {fileID: 339127018}
   - component: {fileID: 339127020}
   - component: {fileID: 339127019}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2646,7 +2646,7 @@ GameObject:
   - component: {fileID: 1040107522}
   - component: {fileID: 1040107521}
   - component: {fileID: 1040107524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3657,7 +3657,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -16057,7 +16057,7 @@ GameObject:
   - component: {fileID: 1623624150}
   - component: {fileID: 1623624149}
   - component: {fileID: 1623624148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16801,7 +16801,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -24455,7 +24455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004840769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -16.666666}
+  m_LocalPosition: {x: 0, y: 0, z: -16.666664}
   m_LocalScale: {x: 1.4378327, y: 1.5148095, z: 1.6666664}
   m_ConstrainProportionsScale: 0
   m_Children:
