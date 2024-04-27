@@ -30,6 +30,9 @@ public class EnemySpawner : MonoBehaviour
     public List<Wave> waves; //Listado de todas las oleadas del juego
     public int currentWaveCount;
 
+    [Header("Spawner Attributes")]
+    float spawnTimer; //Tiempo para determinar cuando spawnear el siguiente enemigo
+
     Transform player;
 
     // Start is called before the first frame update
@@ -37,13 +40,20 @@ public class EnemySpawner : MonoBehaviour
     {
         player = FindObjectOfType<CombatePJ>().transform;
         CalculateWaveQuota();
-        SpawnEnemies();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        spawnTimer += Time.deltaTime;
+
+        //Comprueba si hay que spawnear otro enemigo
+
+        if(spawnTimer >= waves[currentWaveCount].spawnInterval)
+        {
+            spawnTimer = 0f;
+            SpawnEnemies();
+        }
     }
 
     void CalculateWaveQuota()
