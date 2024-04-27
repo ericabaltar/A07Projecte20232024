@@ -2743,6 +2743,64 @@ MonoBehaviour:
   Enemy: {fileID: 793913748}
   player: {fileID: 680894541}
   Area: {fileID: 1040107520}
+--- !u!1 &1079183440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1079183442}
+  - component: {fileID: 1079183441}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1079183441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079183440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2e8d0853862694b82d10e92b20c868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - waveName: Wave 1
+    enemyGroups:
+    - enemyName: Orc
+      enemyCount: 3
+      spawnCount: 0
+      enemyPrefab: {fileID: 793913748}
+    enemyPrefabs: []
+    enemyName: []
+    enemyCount: 
+    waveQuota: 0
+    spawnInterval: 3
+    spawnCount: 0
+  currentWaveCount: 0
+--- !u!4 &1079183442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079183440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3541305, y: -10.060705, z: -9.718157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1152724491
 GameObject:
   m_ObjectHideFlags: 0
@@ -3007,11 +3065,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0e75173e152b87d439f2e2c42269cbaf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.84220797
+      value: 0.59763074
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0e75173e152b87d439f2e2c42269cbaf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7487254
+      value: 0.5500137
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0e75173e152b87d439f2e2c42269cbaf, type: 3}
       propertyPath: m_LocalScale.z
@@ -3019,11 +3077,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0e75173e152b87d439f2e2c42269cbaf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.0235
+      value: -28.1917
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0e75173e152b87d439f2e2c42269cbaf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5405
+      value: 2.9007
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0e75173e152b87d439f2e2c42269cbaf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3262,7 +3320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280294605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.0235, y: 2.5405, z: -10}
+  m_LocalPosition: {x: -28.1917, y: 2.9007, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16402,6 +16460,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: c3eec4b29edb4d24386d3129400c67f9, type: 3}
       propertyPath: m_Name
       value: Orco
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: c3eec4b29edb4d24386d3129400c67f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2253911629886400664, guid: c3eec4b29edb4d24386d3129400c67f9, type: 3}
       propertyPath: m_TagString
