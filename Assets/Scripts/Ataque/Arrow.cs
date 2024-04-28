@@ -28,6 +28,7 @@ public class Arrow : MonoBehaviour
             hasCollided = true;
             Destroy(this.gameObject,3f);
         }
+        this.GetComponent<BoxCollider2D>().enabled = false;
     }
     // Update is called once per frame
     void FixedUpdate()
