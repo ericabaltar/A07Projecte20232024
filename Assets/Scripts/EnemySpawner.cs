@@ -16,6 +16,8 @@ public class EnemySpawner : MonoBehaviour
         public float spawnInterval; //Intervalo de spawn de enemigos
         public int spawnCount; //Numero de enemigos spawneados
 
+
+
     }
 
     [System.Serializable]
@@ -29,11 +31,14 @@ public class EnemySpawner : MonoBehaviour
 
     public List<Wave> waves; //Listado de todas las oleadas del juego
     public int currentWaveCount;
+    public GameObject spawnPoint;
+
 
     [Header("Spawner Attributes")]
     float spawnTimer; //Tiempo para determinar cuando spawnear el siguiente enemigo
 
     Transform player;
+    public GameObject[] roomLimits;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
 
         //Comprueba si hay que spawnear otro enemigo
 
-        if(spawnTimer >= waves[currentWaveCount].spawnInterval)
+        if (spawnTimer >= waves[currentWaveCount].spawnInterval)
         {
             spawnTimer = 0f;
             SpawnEnemies();
@@ -59,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
     void CalculateWaveQuota()
     {
         int CurrentWaveQuota = 0;
-        foreach(var enemyGroup in waves[currentWaveCount].enemyGroups)
+        foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
         {
             CurrentWaveQuota += enemyGroup.enemyCount;
         }
@@ -72,19 +77,24 @@ public class EnemySpawner : MonoBehaviour
     {
         if (waves[currentWaveCount].spawnCount < waves[currentWaveCount].waveQuota)
         {
-            foreach(var enemyGroup in waves[currentWaveCount].enemyGroups)
+            foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
             {
-                if(enemyGroup.spawnCount  < enemyGroup.enemyCount)
+                if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
-                    Vector2 spawnPosition = new Vector2(player.transform.position.x + Random.Range(-10f, 10f), player.transform.position.y + Random.Range(-10f, 10f));
-                    Instantiate(enemyGroup.enemyPrefab, spawnPosition, Quaternion.identity);
+                    Vector2 spawnPosition = spawnPoint.transform.position;
 
+                    // Instancia el enemigo
+                    GameObject enemyClone = Instantiate(enemyGroup.enemyPrefab, spawnPosition, Quaternion.identity);
+
+                    // Activa la visibilidad del enemigo clonado
+                    enemyClone.SetActive(true);
+
+                    // Incrementa el contador de spawn del grupo de enemigos y de la oleada
                     enemyGroup.spawnCount++;
                     waves[currentWaveCount].spawnCount++;
                 }
             }
         }
-        
     }
 }
  
