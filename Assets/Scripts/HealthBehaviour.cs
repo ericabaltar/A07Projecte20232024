@@ -12,7 +12,7 @@ public class HealthBehaviour : MonoBehaviour
     public UnityEvent OnDie;
 
     public Image healthBar; // Referencia a la imagen de la barra de vida
-    public Text damageText; // Referencia al texto que muestra el daño recibido
+    public Text damageText; // Referencia al texto que muestra el daï¿½o recibido
 
     private void Start()
     {
@@ -89,7 +89,7 @@ public class HealthBehaviour : MonoBehaviour
             float healthRatio = (float)health / (float)maxHealth;
             healthBar.fillAmount = healthRatio;
 
-            // Cambiar el color de la barra de vida según la cantidad de vida restante
+            // Cambiar el color de la barra de vida segï¿½n la cantidad de vida restante
             if (healthRatio > 0.5f)
                 healthBar.color = Color.green;
             else if (healthRatio > 0.2f)
@@ -105,7 +105,7 @@ public class HealthBehaviour : MonoBehaviour
         {
             damageText.text = "Damage: " + (maxHealth - health).ToString();
 
-            // Cambiar el color del texto de daño a rojo
+            // Cambiar el color del texto de daï¿½o a rojo
             damageText.color = Color.red;
         }
     }
