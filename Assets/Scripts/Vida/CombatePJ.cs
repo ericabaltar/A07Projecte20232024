@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +6,8 @@ using UnityEngine.Windows;
 public class CombatePJ : MonoBehaviour
 {
     [SerializeField] private float vida;
-
     [SerializeField] private float maximoVida;
-
     [SerializeField] private BarraDeVida barraDeVida;
-
-
     public bool melee = true;
 
     private void Start()
