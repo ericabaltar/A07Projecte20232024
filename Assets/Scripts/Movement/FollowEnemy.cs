@@ -13,6 +13,7 @@ public class Follow_AI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
+        playerObject = GameObject.FindGameObjectWithTag(playerTag).transform;
     }
 
     private void FixedUpdate()

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
+
 
 public class CombatePJ : MonoBehaviour
 {
@@ -14,9 +16,10 @@ public class CombatePJ : MonoBehaviour
     {
         vida = maximoVida;
     }
+
     private void Update()
     {
-        if(UnityEngine.Input.GetKeyDown(KeyCode.Space))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
             melee = !melee;
     }
 
@@ -26,15 +29,18 @@ public class CombatePJ : MonoBehaviour
         barraDeVida.CambiarVidaActual(vida);
         if (vida <= 0)
         {
-            Destroy(gameObject);
+            // Reiniciar la escena
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
     public void Curar(float curacion)
     {
-        if ((vida + curacion) > maximoVida)
+        vida += curacion; // Agrega la curación a la vida actual
+        if (vida > maximoVida)
         {
-            vida = maximoVida;
+            vida = maximoVida; // Limita la vida al máximo
         }
+        barraDeVida.CambiarVidaActual(vida);
     }
 }
