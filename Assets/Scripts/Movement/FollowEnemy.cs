@@ -1,27 +1,12 @@
-using NavMeshPlus.Components;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.AI;
 
-
 public class Follow_AI : MonoBehaviour
 {
-    [SerializeField] private Transform objective;
-    [SerializeField] private NavMeshSurface navMeshSurface2D;
-    
-
-
-    private bool isFacingRight = true;
-
-
+    [SerializeField] private string playerTag = "Player";
+    private Transform playerObject;
     private NavMeshAgent navMeshAgent;
-
-
-
-
-
+    private bool isFacingRight = true;
 
     private void Start()
     {
@@ -30,26 +15,19 @@ public class Follow_AI : MonoBehaviour
         navMeshAgent.updateUpAxis = false;
     }
 
-
     private void FixedUpdate()
     {
-        bool isFacingRight = transform.position.x < objective.transform.position.x;
-        Flip(isFacingRight);
-
-
-
-
-        navMeshAgent.SetDestination(objective.position);
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (playerObject != null)
         {
-            navMeshSurface2D.BuildNavMeshAsync();
+            bool isPlayerRight = transform.position.x < playerObject.position.x;
+            Flip(isPlayerRight);
+            navMeshAgent.SetDestination(playerObject.position);
         }
     }
 
-
     private void Flip(bool isPlayerRight)
     {
-        if((isFacingRight && isPlayerRight) || (!isFacingRight && !isPlayerRight))
+        if ((isFacingRight && isPlayerRight) || (!isFacingRight && !isPlayerRight))
         {
             isFacingRight = !isFacingRight;
             Vector3 scale = transform.localScale;
@@ -57,10 +35,4 @@ public class Follow_AI : MonoBehaviour
             transform.localScale = scale;
         }
     }
-
-
-
-
 }
-
-
