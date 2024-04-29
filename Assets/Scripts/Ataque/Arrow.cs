@@ -8,6 +8,8 @@ public class Arrow : MonoBehaviour
 
     public float speed = 3;
 
+    private bool hasCollided = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +21,22 @@ public class Arrow : MonoBehaviour
         if (collision.gameObject.TryGetComponent<OrcSystem>(out OrcSystem os))
         {
             StartCoroutine(os.GetDamage());
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else if(collision.gameObject)
+        {
+            hasCollided = true;
+            Destroy(this.gameObject,3f);
+        }
+        this.GetComponent<BoxCollider2D>().enabled = false;
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        rigidbody.MovePosition(transform.position + transform.right * speed * Time.fixedDeltaTime);
+        if (!hasCollided)
+        {
+            rigidbody.MovePosition(transform.position + transform.right * speed * Time.fixedDeltaTime);
+        }
     }
 
 }
