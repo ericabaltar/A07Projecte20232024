@@ -26,8 +26,10 @@ public class MeleeAttack : MonoBehaviour
                 Invoke("ActivateHitbox", 0.2f); // Activate hitbox after 0.2 seconds.
                 Invoke("DeactivateHitbox", 0.4f); // Deactivate hitbox after 0.4 seconds.
 
+                // Debug log cuando se realiza un ataque melee
+                Debug.Log("El jugador ha realizado un ataque a melee");
             }
-           
+
         }
     }
     void ActivateHitbox()
