@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NewBehaviourScript1 : MonoBehaviour
 {
@@ -10,8 +11,11 @@ public class NewBehaviourScript1 : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform[] spawnPoints;
 
+    public UnityEvent setActive;
+
     void Start()
     {
+        //if (!spawning) return;
         StartCoroutine(SpawnWaves());
     }
 
@@ -26,6 +30,7 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     void SpawnWave()
     {
+
         for (int i = 0; i < numberOfEnemiesPerWave; i++)
         {
             // Selecciona aleatoriamente uno de los puntos de spawn
@@ -52,5 +57,9 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     }
 
+    void KilledAllEnemies()
+    {
+        setActive.Invoke();
+    }
 }
 
