@@ -57,9 +57,10 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     }
 
-    void KilledAllEnemies()
-    {
-        setActive.Invoke();
-    }
+   // void KilledAllEnemies()
+    //{
+        
+      //  setActive.Invoke();
+    //}
 }
 
