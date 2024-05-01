@@ -13,10 +13,24 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     public UnityEvent setActive;
 
-    void Start()
+    private bool spawning = false;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        //if (!spawning) return;
-        StartCoroutine(SpawnWaves());
+        if (other.CompareTag("Player"))
+        {
+            StartSpawning();
+            Debug.Log("Empiezan las oleadas");
+        }
+    }
+
+    void StartSpawning()
+    {
+        if (!spawning)
+        {
+            spawning = true;
+            StartCoroutine(SpawnWaves());
+        }
     }
 
     IEnumerator SpawnWaves()
@@ -30,37 +44,10 @@ public class NewBehaviourScript1 : MonoBehaviour
 
     void SpawnWave()
     {
-
         for (int i = 0; i < numberOfEnemiesPerWave; i++)
         {
-            // Selecciona aleatoriamente uno de los puntos de spawn
             Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
-            // Instancia el enemigo en la posición del punto de spawn previamente seleccionado aleatoriamente
             Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemy in enemies)
-            {
-                Renderer enemyRenderer = enemy.GetComponent<Renderer>();
-                if (enemyRenderer != null)
-                {
-                    enemyRenderer.enabled = true;
-                }
-                else
-                {
-                    Debug.LogWarning("El objeto con la etiqueta 'Enemy' no tiene un componente Renderer para controlar la visibilidad.");
-                }
-
-            }
         }
-
     }
-
-   // void KilledAllEnemies()
-    //{
-        
-      //  setActive.Invoke();
-    //}
 }
-

@@ -11,9 +11,6 @@ public class CursorController : MonoBehaviour
 
     void Start()
     {
-        // Oculta el cursor predeterminado de Unity
-        Cursor.visible = false;
-
         // Si se proporciona una textura de cursor personalizado, asignarla
         if (defaultCursorTexture != null)
         {
