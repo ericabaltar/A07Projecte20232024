@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Open : MonoBehaviour
+public class OpenAbility : MonoBehaviour
 {
-    public GameObject Door1;
-    public GameObject Door2;
-    public GameObject player;
+    public GameObject Doors;
+    public GameObject Ability;
     public GameObject Area;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        Door1.SetActive(false);
-        Door2.SetActive(false);
+        Doors.SetActive(true);
     }
 
     // Update is called once per frame
@@ -24,13 +22,11 @@ public class Open : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Door1.SetActive(true);
-        Door2.SetActive(true);
+        Doors.SetActive(false);
     }
 
     void SetActive()
     {
-        Door1.SetActive(!Door1.activeSelf);
-        Door2.SetActive(!Door1.activeSelf);
+        Doors.SetActive(!Doors.activeSelf);
     }
 }
