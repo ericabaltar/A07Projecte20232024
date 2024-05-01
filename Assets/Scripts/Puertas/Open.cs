@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Open : MonoBehaviour
 {
+    public GameObject Enemy;
     public GameObject Door1;
     public GameObject Door2;
     public GameObject player;
@@ -12,9 +13,10 @@ public class Open : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         Door1.SetActive(false);
         Door2.SetActive(false);
+        Enemy.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -26,6 +28,12 @@ public class Open : MonoBehaviour
     {
         Door1.SetActive(true);
         Door2.SetActive(true);
+
+        if (Enemy = null)
+        {
+            Door1.SetActive(false);
+            Door2.SetActive(false);
+        }
     }
 
     void SetActive()
