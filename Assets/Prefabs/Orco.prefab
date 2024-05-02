@@ -397,7 +397,7 @@ Transform:
   - {fileID: 1880817549765522520}
   - {fileID: 8396283100840221825}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3892332837841140349
 SpriteRenderer:
@@ -461,7 +461,7 @@ Animator:
   m_GameObject: {fileID: 7271416159828131313}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c342f76a4540e9743aefe921365087c3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0f79c3e249d1fa44591dbcde8bdec430, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
