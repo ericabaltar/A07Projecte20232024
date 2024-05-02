@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
 
 public class OrcSystem : MonoBehaviour
@@ -14,6 +11,9 @@ public class OrcSystem : MonoBehaviour
     private bool canAttack = true; // Variable para controlar el cooldown
     private float health;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    private bool isRunning = false;
+    private bool isAttacking = false;
 
     private void Start()
     {
@@ -21,6 +21,7 @@ public class OrcSystem : MonoBehaviour
         barraDeVidaOrco.UpdateHealthBar(maxHealth, health);
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBehaviour>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -31,7 +32,16 @@ public class OrcSystem : MonoBehaviour
             // Realiza un ataque melee al jugador
             StartCoroutine(AttackCooldown());
         }
+        else
+        {
+            // Si no está atacando, corre
+            isRunning = true;
+            isAttacking = false;
+            animator.SetBool("IsRunning", isRunning);
+            animator.SetBool("IsAttacking", isAttacking);
+        }
     }
+
 
     private IEnumerator AttackCooldown()
     {
@@ -46,6 +56,11 @@ public class OrcSystem : MonoBehaviour
         // Realiza un ataque cuerpo a cuerpo al jugador
         Debug.Log("Enemy realiza un ataque cuerpo a cuerpo al jugador");
         playerHealth.Damage((int)meleeAttackDamage);
+        // Cambia la animación a ataque
+        isRunning = false;
+        isAttacking = true;
+        animator.SetBool("IsRunning", false);
+        animator.SetBool("IsAttacking", true);
     }
 
     private void OnMouseDown()
