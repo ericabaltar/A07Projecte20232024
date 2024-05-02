@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 3588047083103946718}
   - component: {fileID: 7679600575194315938}
   - component: {fileID: 3760078115230861984}
+  - component: {fileID: -2158384646023423218}
   m_Layer: 0
   m_Name: EnemigoDistancia
   m_TagString: Enemy
@@ -543,7 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb41bfbc58cceb4fa481e6075b03ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangedAttackDamage: 20
+  rangedAttackDamage: 15
   rangedAttackRange: 5
   followRange: 10
   desiredDistance: 3
@@ -572,3 +573,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &-2158384646023423218
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818504091541120166}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

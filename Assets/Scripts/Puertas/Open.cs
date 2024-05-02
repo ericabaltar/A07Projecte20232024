@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class Open : MonoBehaviour
 {
-    public GameObject Enemy;
+    private bool seHaEjecutado = false;
     public GameObject Door1;
     public GameObject Door2;
     public GameObject player;
     public GameObject Area;
+    private List<GameObject> enemies = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         Door1.SetActive(false);
         Door2.SetActive(false);
-        Enemy.SetActive(true);
-
     }
 
     // Update is called once per frame
@@ -24,21 +23,44 @@ public class Open : MonoBehaviour
     {
        
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        Door1.SetActive(true);
-        Door2.SetActive(true);
 
-        if (Enemy = null)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == player)
         {
-            Door1.SetActive(false);
-            Door2.SetActive(false);
+            OpenDoors();
+        }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            enemies.Add(collision.gameObject);
         }
     }
 
-    void SetActive()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Door1.SetActive(!Door1.activeSelf);
-        Door2.SetActive(!Door1.activeSelf);
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            enemies.Remove(collision.gameObject);
+            if (enemies.Count == 0)
+            {
+                CloseDoors();
+            }
+        }
+    }
+
+    private void OpenDoors()
+    {
+        if (!seHaEjecutado)
+        {
+            Door1.SetActive(true);
+            Door2.SetActive(true);
+            seHaEjecutado = true;
+        }
+    }
+
+    private void CloseDoors()
+    {
+        Destroy(Door1);
+        Destroy(Door2);
     }
 }
