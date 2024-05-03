@@ -9,11 +9,11 @@ public class PlayerBow : MonoBehaviour
     public new Camera camera;
     public Transform spawner;
     public GameObject ArrowPrefab;
+    public SpriteRenderer PJ;
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 
     // Update is called once per frame
@@ -21,6 +21,8 @@ public class PlayerBow : MonoBehaviour
     {
         RotateTowardsMouse();
         CheckFiring();
+        transform.localPosition = PJ.flipX ? Vector2.left * 0.5f + Vector2.up : Vector2.right * 0.5f + Vector2.up;
+       
     }
 
     private void RotateTowardsMouse()
