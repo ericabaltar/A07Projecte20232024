@@ -7,13 +7,12 @@ public class Akey : MonoBehaviour
     public GameObject key;
     public GameObject Player;
     public string playername;
-    public bool KeyIsOn;
+public GameObject door;
+    
     // Start is called before the first frame update
     void Start()
     {
         playername = Player.name;
-
-        KeyIsOn = true;
     }
 
     // Update is called once per frame
@@ -27,6 +26,6 @@ public class Akey : MonoBehaviour
         if (collision.collider.name == playername)
         //
         Destroy(key);
-        KeyIsOn = false;
+Destroy(door);
     }
 }
