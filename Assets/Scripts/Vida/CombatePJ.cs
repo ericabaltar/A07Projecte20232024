@@ -11,6 +11,10 @@ public class CombatePJ : MonoBehaviour
     [SerializeField] private float maximoVida;
     [SerializeField] private BarraDeVida barraDeVida;
     public bool melee = true;
+    private bool SwordActive = true;
+    public GameObject BowSpawn;
+    public GameObject Bow;
+    public GameObject Sword;
 
     private void Start()
     {
@@ -19,8 +23,14 @@ public class CombatePJ : MonoBehaviour
 
     private void Update()
     {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
-            melee = !melee;
+    
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            {
+                melee = !melee;
+                SwordActive = !SwordActive;
+                Bow.SetActive(!SwordActive);
+                Sword.SetActive(SwordActive);
+            }
     }
 
     public void TomarDano(float dano)

@@ -33654,6 +33654,9 @@ MonoBehaviour:
   maximoVida: 100
   barraDeVida: {fileID: 7515180689074680315}
   melee: 1
+  BowSpawn: {fileID: 1049439221}
+  Bow: {fileID: 8771205864027854096}
+  Sword: {fileID: 710112961}
 --- !u!114 &6809040406303667679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33675,7 +33678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804383717099751898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -16.666664}
+  m_LocalPosition: {x: 0, y: 0, z: -16.666666}
   m_LocalScale: {x: 1.4378327, y: 1.5148095, z: 1.6666664}
   m_ConstrainProportionsScale: 0
   m_Children:
