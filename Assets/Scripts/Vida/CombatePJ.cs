@@ -23,7 +23,8 @@ public class CombatePJ : MonoBehaviour
 
     private void Update()
     {
-    
+        if (!BowSpawn.active)
+        {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
             {
                 melee = !melee;
@@ -31,6 +32,7 @@ public class CombatePJ : MonoBehaviour
                 Bow.SetActive(!SwordActive);
                 Sword.SetActive(SwordActive);
             }
+        }
     }
 
     public void TomarDano(float dano)
