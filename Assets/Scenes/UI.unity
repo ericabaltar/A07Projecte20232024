@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 61605452}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1301297148}
+        m_TargetAssemblyTypeName: MenuPausa, Assembly-CSharp
+        m_MethodName: SalirDelJuego
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &61605452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1043,7 +1055,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1112523290}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1301297148}
+        m_TargetAssemblyTypeName: MenuPausa, Assembly-CSharp
+        m_MethodName: EmpezarJuego
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1112523290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,6 +1115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1301297147}
+  - component: {fileID: 1301297148}
   m_Layer: 0
   m_Name: Menu Pausa
   m_TagString: Untagged
@@ -1114,6 +1139,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301297148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301297146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e03077fddb7a4c418433dfa8714ebee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuPausaUI: {fileID: 0}
 --- !u!1 &1310796723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1235,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1310796726}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1301297148}
+        m_TargetAssemblyTypeName: MenuPausa, Assembly-CSharp
+        m_MethodName: IrAMenuOpciones
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1310796726
 MonoBehaviour:
   m_ObjectHideFlags: 0
