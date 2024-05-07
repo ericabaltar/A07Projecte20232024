@@ -111,7 +111,7 @@ public class HealthBehaviour : MonoBehaviour
 
     private void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(3);
     }
 
     // Método para restaurar la salud al máximo al recoger una poción
