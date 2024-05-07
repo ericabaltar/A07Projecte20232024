@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mysteria.unity
     guid: 0caf2ba7fccaa904e97a056fd4dded1a
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 3fbc5f2a737b2774abe02c7c972bdadd
   m_configObjects: {}
