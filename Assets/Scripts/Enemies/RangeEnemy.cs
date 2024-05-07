@@ -109,7 +109,7 @@ public class RangeEnemy : MonoBehaviour
         StartCoroutine(GetDamage());
     }
 
-    private IEnumerator GetDamage()
+    public IEnumerator GetDamage()
     {
         float damageDuration = 0.1f;
         float damage = UnityEngine.Random.Range(1f, 5f);

@@ -18,7 +18,7 @@ public class Arrow : MonoBehaviour
 
     private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<OrcSystem>(out OrcSystem os))
+        if (collision.gameObject.TryGetComponent<RangeEnemy>(out RangeEnemy os))
         {
             StartCoroutine(os.GetDamage());
             Destroy(gameObject);
