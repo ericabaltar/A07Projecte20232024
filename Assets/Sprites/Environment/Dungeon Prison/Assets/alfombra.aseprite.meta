@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 445d334d8a084c642aea1ab435a486f6
+guid: 7a5a6e042a844e044a4f58cdce88ca04
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -71,7 +71,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -83,7 +83,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638506950450172946
+  platformSettingsDirtyTick: 638506965789746756
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Tiles
+  - name: alfombra
     originalName: 
-    pivot: {x: 0.6775956, y: -0.42285717}
+    pivot: {x: 1, y: -1.6666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 366
-      height: 350
-    spriteID: 8dc94f956f195794389838d3f53f751f
+      width: 64
+      height: 48
+    spriteID: b636a0e8dfd991144919eb32cb98a7b0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,24 +138,64 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 2, y: -144}
-  spriteSheetImportData: []
+    uvTransform: {x: 4, y: -76}
+  spriteSheetImportData:
+  - name: alfombra_0
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 52
+      width: 32
+      height: 32
+    spriteID: f574e3f9d6dd4b845bb98204b9792038
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: alfombra_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 32
+      height: 48
+    spriteID: 4ed65a32ae5ead14299d16ff13b4c5c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -290870689
-    name: Tiles
+    guid: 1513349214
+    name: alfombra
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Tiles
+    - name: alfombra
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 500
-        height: 500
-      spriteId: 8dc94f956f195794389838d3f53f751f
+        width: 128
+        height: 128
+      spriteId: b636a0e8dfd991144919eb32cb98a7b0
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -197,4 +237,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 500, y: 500}
+  canvasSize: {x: 128, y: 128}
