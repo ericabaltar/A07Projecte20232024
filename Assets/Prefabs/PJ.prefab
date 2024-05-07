@@ -541,6 +541,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   spawner: {fileID: 1948009442030701819}
   ArrowPrefab: {fileID: 6989692358279372296, guid: 7701f1cde94d9604cac947d593b475e5, type: 3}
+  PJ: {fileID: 0}
 --- !u!1 &7287417517026594681
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +625,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -8799333496187593499, guid: 0e75173e152b87d439f2e2c42269cbaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -758,6 +759,9 @@ MonoBehaviour:
   maximoVida: 100
   barraDeVida: {fileID: 0}
   melee: 1
+  BowSpawn: {fileID: 0}
+  Bow: {fileID: 0}
+  Sword: {fileID: 0}
 --- !u!114 &6062393907315670270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +806,8 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+  healthBar: {fileID: 0}
+  damageText: {fileID: 0}
 --- !u!1 &9102195519620929798
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 445d334d8a084c642aea1ab435a486f6
+guid: e7cc7cb4258bc1141ac11b49ec271d98
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Tiles
+  - name: DooNormal
     originalName: 
-    pivot: {x: 0.6775956, y: -0.42285717}
+    pivot: {x: 0.4871795, y: -0.8867925}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 366
-      height: 350
-    spriteID: 8dc94f956f195794389838d3f53f751f
+      width: 48
+      height: 40
+    spriteID: b8e2d21ab2eee3e48ba56182e04d3264
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,27 +138,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 2, y: -144}
+    uvTransform: {x: -36, y: -43}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -290870689
-    name: Tiles
+    guid: -1551758889
+    name: DooNormal
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Tiles
+    - name: DooNormal
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 500
-        height: 500
-      spriteId: 8dc94f956f195794389838d3f53f751f
+        width: 128
+        height: 128
+      spriteId: b8e2d21ab2eee3e48ba56182e04d3264
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 500, y: 500}
+  canvasSize: {x: 128, y: 128}
