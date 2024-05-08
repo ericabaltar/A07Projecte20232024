@@ -93,11 +93,11 @@ public class HealthBehaviour : MonoBehaviour
             healthBar.fillAmount = healthRatio;
 
             if (healthRatio > 0.5f)
-                healthBar.color = Color.green;
+                healthBar.color = Color.white;
             else if (healthRatio > 0.2f)
-                healthBar.color = Color.yellow;
+                healthBar.color = Color.white;
             else
-                healthBar.color = Color.red;
+                healthBar.color = Color.white;
         }
     }
 
