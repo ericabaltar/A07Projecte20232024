@@ -17,14 +17,14 @@ public class BossController : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private BarraDeVidaOrco barraDeVidaOrco;
     [SerializeField] private ParticleSystem magicAttackParticles;
-    [SerializeField] private float attackCooldown = 2f; // Tiempo entre ataques
-    [SerializeField] private bool Idle = false; // Nuevo parámetro para controlar la animación Idle
+    [SerializeField] private float attackCooldown = 2f;
     private HealthBehaviour playerHealth;
     private NavMeshAgent navMeshAgent;
-    private bool canAttack = true; // Controla el cooldown entre ataques
+    private bool canAttack = true;
     private float health;
     private SpriteRenderer spriteRenderer;
-    private Animator animator; // Referencia al componente Animator
+    private Animator animator;
+    private bool inMeleeRange = false;
 
     private void Start()
     {
@@ -36,8 +36,7 @@ public class BossController : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         magicAttackParticles.Stop();
-        animator = GetComponent<Animator>(); // Obtener el componente Animator del jefe
-
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -46,7 +45,7 @@ public class BossController : MonoBehaviour
 
         if (canAttack)
         {
-            if (distanceToPlayer <= meleeAttackRange)
+            if (distanceToPlayer <= meleeAttackRange && inMeleeRange)
             {
                 StartCoroutine(MeleeAttackCooldown());
             }
@@ -88,7 +87,7 @@ public class BossController : MonoBehaviour
     private void AttackMelee()
     {
         playerHealth.Damage((int)meleeAttackDamage);
-        animator.SetTrigger("MeleeAttack"); // Activar la animación de ataque melee
+        animator.SetTrigger("MeleeAttack");
     }
 
     private IEnumerator RangedAttackCooldown()
@@ -107,13 +106,18 @@ public class BossController : MonoBehaviour
         magicAttackParticles.transform.position = particlePosition;
         magicAttackParticles.Play();
         playerHealth.Damage((int)rangedAttackDamage);
-        animator.SetTrigger("RangedAttack"); // Activar la animación de ataque a distancia
+        animator.SetTrigger("RangedAttack");
     }
 
     private void OnMouseDown()
     {
-        StartCoroutine(GetDamage());
+        CombatBehaviour combatBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<CombatBehaviour>();
+        if (combatBehaviour != null && combatBehaviour.IsMeleeMode() && inMeleeRange)
+        {
+            StartCoroutine(GetDamage());
+        }
     }
+
 
     private IEnumerator GetDamage()
     {
@@ -124,9 +128,9 @@ public class BossController : MonoBehaviour
 
         if (health <= 0)
         {
-            animator.SetTrigger("Die"); // Activar la animación de muerte
-            yield return new WaitForSeconds(1.0f); // Ajusta el tiempo según la duración de tu animación de muerte
-            Destroy(gameObject); // Destruir el jefe
+            animator.SetTrigger("Die");
+            yield return new WaitForSeconds(1.0f);
+            Destroy(gameObject);
             SceneManager.LoadScene(4);
         }
         else
@@ -134,6 +138,32 @@ public class BossController : MonoBehaviour
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(damageDuration);
             spriteRenderer.color = Color.white;
+        }
+    }
+
+    private bool IsArrowHit()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f);
+        if (hit.collider != null && hit.collider.CompareTag("Arrow"))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("MeleeAttackTrigger"))
+        {
+            inMeleeRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("MeleeAttackTrigger"))
+        {
+            inMeleeRange = false;
         }
     }
 }

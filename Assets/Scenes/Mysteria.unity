@@ -3994,7 +3994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &710112962
 Transform:
   m_ObjectHideFlags: 0
@@ -27828,18 +27828,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2860505625477699808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396725322076237849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7abf38be892d8804face1388e19c6f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2933634769760933152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32631,7 +32619,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5396725322076237849}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -32653,10 +32641,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.46348163, y: 0.11859281}
+  m_Offset: {x: -19.923147, y: 9.590319}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -32667,7 +32655,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19468087, y: 0.19080546}
+  m_Size: {x: 2.453968, y: 2.155365}
   m_EdgeRadius: 0
 --- !u!1 &3397731464079302874
 GameObject:
@@ -32926,10 +32914,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4058814988642529264}
   - component: {fileID: 3286542234187647137}
-  - component: {fileID: 2860505625477699808}
   m_Layer: 0
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: MeleeAttackTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32961,7 +32948,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174772569985179885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f261b4f64ed5a9d41a6678aa020748f9, type: 3}
   m_Name: 
@@ -33108,7 +33095,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174772569985179885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4edce02559acf49870603ac1643a71, type: 3}
   m_Name: 
@@ -33128,7 +33115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804383717099751898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -16.666664}
+  m_LocalPosition: {x: 0, y: 0, z: -16.666666}
   m_LocalScale: {x: 1.4378327, y: 1.5148095, z: 1.6666664}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33154,7 +33141,7 @@ GameObject:
   - component: {fileID: 3126037655627299034}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33469,7 +33456,6 @@ MonoBehaviour:
   barraDeVidaOrco: {fileID: 2324389303234355709}
   magicAttackParticles: {fileID: 2965139509966269817}
   attackCooldown: 2
-  Idle: 0
 --- !u!212 &8598373221425432870
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33539,7 +33525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8836905986859544471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33609,7 +33595,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8771205864027854096}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f89ceef5cdcc876469bcb998e5034fe3, type: 3}
   m_Name: 
@@ -33632,6 +33618,7 @@ GameObject:
   - component: {fileID: 8368071722232765245}
   - component: {fileID: 8999149279414892070}
   - component: {fileID: 608194529414583655}
+  - component: {fileID: 9174772569985179886}
   - component: {fileID: 6771345241969591507}
   - component: {fileID: 5643221122819838826}
   - component: {fileID: 2933634769760933152}
@@ -33642,3 +33629,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9174772569985179886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174772569985179885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7517f2d6b5e93d42b80bd16dd47e905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeAttackTrigger: {fileID: 3286542234187647137}
+  arrowPrefab: {fileID: 6989692358279372296, guid: 7701f1cde94d9604cac947d593b475e5, type: 3}
+  arrowSpawnPoint: {fileID: 106385248798532463}
+  bow: {fileID: 8771205864027854096}
