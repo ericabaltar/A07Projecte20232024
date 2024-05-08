@@ -17,11 +17,13 @@ public class BossController : MonoBehaviour
     [SerializeField] private BarraDeVidaOrco barraDeVidaOrco;
     [SerializeField] private ParticleSystem magicAttackParticles;
     [SerializeField] private float attackCooldown = 2f; // Tiempo entre ataques
+    [SerializeField] private bool Idle = false; // Nuevo parámetro para controlar la animación Idle
     private HealthBehaviour playerHealth;
     private NavMeshAgent navMeshAgent;
     private bool canAttack = true; // Controla el cooldown entre ataques
     private float health;
     private SpriteRenderer spriteRenderer;
+    private Animator animator; // Referencia al componente Animator
 
     private void Start()
     {
@@ -33,6 +35,8 @@ public class BossController : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         magicAttackParticles.Stop();
+        animator = GetComponent<Animator>(); // Obtener el componente Animator del jefe
+
     }
 
     private void Update()
@@ -83,6 +87,7 @@ public class BossController : MonoBehaviour
     private void AttackMelee()
     {
         playerHealth.Damage((int)meleeAttackDamage);
+        animator.SetTrigger("MeleeAttack"); // Activar la animación de ataque melee
     }
 
     private IEnumerator RangedAttackCooldown()
@@ -101,6 +106,7 @@ public class BossController : MonoBehaviour
         magicAttackParticles.transform.position = particlePosition;
         magicAttackParticles.Play();
         playerHealth.Damage((int)rangedAttackDamage);
+        animator.SetTrigger("RangedAttack"); // Activar la animación de ataque a distancia
     }
 
     private void OnMouseDown()
@@ -115,15 +121,17 @@ public class BossController : MonoBehaviour
         health -= damage;
         barraDeVidaOrco.UpdateHealthBar(maxHealth, health);
 
-        if (health > 0)
+        if (health <= 0)
+        {
+            animator.SetTrigger("Die"); // Activar la animación de muerte
+            yield return new WaitForSeconds(1.0f); // Ajusta el tiempo según la duración de tu animación de muerte
+            Destroy(gameObject); // Destruir el jefe
+        }
+        else
         {
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(damageDuration);
             spriteRenderer.color = Color.white;
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 }
