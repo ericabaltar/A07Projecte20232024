@@ -24,6 +24,17 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(0);
    }
 
+   public void OpenCredits()
+    {
+       //settingsPanel.SetActive(true);
+       SceneManager.LoadScene(5);
+    }
+
+   public void CloseCredits()
+    {
+       //settingsPanel.SetActive(false);
+       SceneManager.LoadScene(0);
+    }
 
    public void ExitGame()
    {
