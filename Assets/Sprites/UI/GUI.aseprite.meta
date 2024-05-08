@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638507732018918420
+  platformSettingsDirtyTick: 638507802720314138
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -912,6 +912,26 @@ ScriptedImporter:
       width: 47
       height: 16
     spriteID: 7c03d778f4106224bb307af91869e8d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: GUI_28
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 58
+      y: 88
+      width: 131
+      height: 89
+    spriteID: 7cea9680fb2ed424491cef406b490cfc
     spriteBone: []
     spriteOutline: []
     vertices: []
