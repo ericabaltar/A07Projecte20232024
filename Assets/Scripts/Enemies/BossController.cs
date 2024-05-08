@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -126,6 +127,7 @@ public class BossController : MonoBehaviour
             animator.SetTrigger("Die"); // Activar la animación de muerte
             yield return new WaitForSeconds(1.0f); // Ajusta el tiempo según la duración de tu animación de muerte
             Destroy(gameObject); // Destruir el jefe
+            SceneManager.LoadScene(4);
         }
         else
         {
