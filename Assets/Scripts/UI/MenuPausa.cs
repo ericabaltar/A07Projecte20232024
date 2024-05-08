@@ -7,13 +7,15 @@ public class MenuPausa : MonoBehaviour
 {
     public GameObject menuPausaUI;
 
+    private bool juegoPausado = false;
+
     void Update()
     {
         
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             
-            if (menuPausaUI.activeSelf)
+            if (juegoPausado)
             {
                 DesactivarMenuPausa();
             }
@@ -26,21 +28,21 @@ public class MenuPausa : MonoBehaviour
 
     public void ActivarMenuPausa()
     {
-        
+        juegoPausado = true;
         menuPausaUI.SetActive(true);
         Time.timeScale = 0f; // Pausa el tiempo del juego
     }
 
     public void DesactivarMenuPausa()
     {
-     
+     juegoPausado = false;
         menuPausaUI.SetActive(false);
         Time.timeScale = 1f; // Reanuda el tiempo del juego
     }
 
     public void EmpezarJuego()
     {
-        SceneManager.LoadScene("Mysteria");
+        
         DesactivarMenuPausa();
     }
 
@@ -51,8 +53,7 @@ public class MenuPausa : MonoBehaviour
 
     public void SalirDelJuego()
     {
-        Debug.Log("Exiting");
-        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
 
