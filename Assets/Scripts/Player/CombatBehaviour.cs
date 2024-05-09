@@ -7,10 +7,11 @@ public class CombatBehaviour : MonoBehaviour
     public Transform arrowSpawnPoint;
     public GameObject bow;
 
-    private bool melee = true;
-    private bool hasBow = false;
+    public bool melee = true;
+    public bool hasBow = false;
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer bowSpriteRenderer;
+    private Animator animator; // Agregar esta variable
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class CombatBehaviour : MonoBehaviour
         bowSpriteRenderer = bow.GetComponent<SpriteRenderer>();
         // Ocultar el arco al inicio
         bowSpriteRenderer.enabled = false;
+        animator = GetComponent<Animator>(); // Obtener el componente Animator
     }
 
     void Update()
@@ -53,6 +55,7 @@ public class CombatBehaviour : MonoBehaviour
             if (melee)
             {
                 PerformMeleeAttack();
+                animator.SetTrigger("MeleeAttack"); // Activar la animación de ataque cuerpo a cuerpo
             }
             else
             {

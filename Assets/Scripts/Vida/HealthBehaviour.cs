@@ -13,7 +13,6 @@ public class HealthBehaviour : MonoBehaviour
     public UnityEvent OnDie;
 
     public Image healthBar;
-    public TextMeshProUGUI damageText;
 
     private int totalDamageTaken = 0;
     private Coroutine damageCoroutine;
@@ -25,8 +24,6 @@ public class HealthBehaviour : MonoBehaviour
         health = maxHealth;
 
         UpdateHealthBarColor();
-
-        damageText.text = "";
     }
 
     public void Damage()
@@ -52,37 +49,10 @@ public class HealthBehaviour : MonoBehaviour
 
     private IEnumerator ResetDamageAfterDelay()
     {
-        // Mostrar el daño en grande y rojo
-        damageText.fontSize = 40;
-        damageText.color = Color.red;
-
-        float startY = damageText.rectTransform.localPosition.y;
-        float targetY = startY + 50;
-
         yield return new WaitForSeconds(2f);
-
-        // Gradualmente reducir el tamaño y la opacidad, y subir el texto
-        float duration = 2f;
-        float timer = 0f;
-        float startSize = 40f;
-        float endSize = 20f;
-        Color startColor = Color.red;
-        Color endColor = new Color(1f, 0f, 0f, 0f);
-
-        while (timer < duration)
-        {
-            float t = timer / duration;
-            damageText.fontSize = Mathf.Lerp(startSize, endSize, t);
-            damageText.color = Color.Lerp(startColor, endColor, t);
-            float newY = Mathf.Lerp(startY, targetY, t);
-            damageText.rectTransform.localPosition = new Vector3(damageText.rectTransform.localPosition.x, newY, damageText.rectTransform.localPosition.z);
-            yield return null;
-            timer += Time.deltaTime;
-        }
 
         // Limpiar el texto después de 2 segundos
         totalDamageTaken = 0; // Reiniciar el total de daño acumulado
-        damageText.text = ""; // Limpiar el texto
     }
 
     private void UpdateHealthBarColor()
@@ -98,14 +68,6 @@ public class HealthBehaviour : MonoBehaviour
                 healthBar.color = Color.white;
             else
                 healthBar.color = Color.white;
-        }
-    }
-
-    private void Update()
-    {
-        if (totalDamageTaken > 0)
-        {
-            damageText.text = totalDamageTaken.ToString();
         }
     }
 
