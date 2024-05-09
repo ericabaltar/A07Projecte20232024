@@ -7,7 +7,11 @@ public class MenuPausa : MonoBehaviour
 {
     public GameObject menuPausaUI;
 
-    private bool juegoPausado = false;
+    public static bool IsPaused;
+    void Start()
+    {
+       menuPausaUI.SetActive(false);
+    }
 
     void Update()
     {
@@ -15,45 +19,30 @@ public class MenuPausa : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             
-            if (juegoPausado)
+            if (IsPaused)
             {
-                DesactivarMenuPausa();
+                ResumeGame();
             }
             else
             {
-                ActivarMenuPausa();
+                PauseGame();
             }
         }
     }
 
-    public void ActivarMenuPausa()
+    public void PauseGame()
     {
-        juegoPausado = true;
+        IsPaused = true;
         menuPausaUI.SetActive(true);
         Time.timeScale = 0f; // Pausa el tiempo del juego
     }
 
-    public void DesactivarMenuPausa()
+    public void ResumeGame()
     {
-     juegoPausado = false;
+        IsPaused= false;
         menuPausaUI.SetActive(false);
         Time.timeScale = 1f; // Reanuda el tiempo del juego
     }
 
-    public void EmpezarJuego()
-    {
-        
-        DesactivarMenuPausa();
-    }
-
-    public void IrAMenuOpciones()
-    {
-        SceneManager.LoadScene("SettingsMenú"); 
-    }
-
-    public void SalirDelJuego()
-    {
-        UnityEditor.EditorApplication.isPlaying = false;
-    }
 }
 

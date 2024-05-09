@@ -110,6 +110,11 @@ public class RangeEnemy : MonoBehaviour
         {
             inMeleeRange = true;
         }
+    
+        else if (other.CompareTag("Arrow"))
+        {
+            StartCoroutine(GetDamage());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

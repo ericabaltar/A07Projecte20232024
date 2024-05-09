@@ -7,6 +7,7 @@ public class Arrow : MonoBehaviour
     private new Rigidbody2D rigidbody;
 
     public float speed = 3;
+    public float lifetime = 0.5f; // Tiempo de vida de la flecha en segundos
 
     private bool hasCollided = false;
 
@@ -14,23 +15,28 @@ public class Arrow : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        StartCoroutine(DestroyAfterDelay(lifetime));
     }
 
-    private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.TryGetComponent<RangeEnemy>(out RangeEnemy os))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(os.GetDamage());
+            // Si colisiona con un gameobject que tenga el tag "Enemy", se destruye
             Destroy(gameObject);
         }
-        else if(collision.gameObject)
+        if (other.gameObject.CompareTag("Door"))
         {
-            hasCollided = true;
-            Destroy(this.gameObject,3f);
+            Destroy(gameObject);
         }
-        this.GetComponent<BoxCollider2D>().enabled = false;
-        rigidbody.bodyType = RigidbodyType2D.Static;
     }
+
+    IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -39,5 +45,4 @@ public class Arrow : MonoBehaviour
             rigidbody.MovePosition(transform.position + transform.right * speed * Time.fixedDeltaTime);
         }
     }
-
 }

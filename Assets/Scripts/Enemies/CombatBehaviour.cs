@@ -8,6 +8,7 @@ public class CombatBehaviour : MonoBehaviour
     public GameObject bow;
 
     private bool melee = true;
+    private bool hasBow = false;
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer bowSpriteRenderer;
 
@@ -21,7 +22,25 @@ public class CombatBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!hasBow)
+        {
+            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, new Vector2(1f, 1f), 0f);
+            foreach (Collider2D hitCollider in hitColliders)
+            {
+                if (hitCollider.CompareTag("Bow"))
+                {
+                    hasBow = true;
+                    melee = false; // Cambio de modo cuando se recoge el arco
+                    bowSpriteRenderer.enabled = true; // Mostrar arco al recogerlo
+                    Debug.Log("Arco recogido");
+                    Destroy(hitCollider.gameObject); // Destruir el objeto "Bow"
+                    break;
+                }
+            }
+        }
+
+        // Cambio de modo solo si se tiene el arco y se presiona la tecla de espacio
+        if (hasBow && Input.GetKeyDown(KeyCode.Space))
         {
             melee = !melee;
             Debug.Log("Modo de ataque cambiado a " + (melee ? "Melee" : "Distancia"));
@@ -29,7 +48,7 @@ public class CombatBehaviour : MonoBehaviour
             bowSpriteRenderer.enabled = !melee;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (hasBow && Input.GetMouseButtonDown(0))
         {
             if (melee)
             {
@@ -46,7 +65,6 @@ public class CombatBehaviour : MonoBehaviour
             RotateBowTowardsMouse();
         }
     }
-
 
     public bool IsMeleeMode()
     {

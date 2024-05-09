@@ -8,6 +8,8 @@ TagManager:
   - Boss
   - Arrow
   - MeleeAttackTrigger
+  - Door
+  - Bow
   layers:
   - Default
   - TransparentFX
