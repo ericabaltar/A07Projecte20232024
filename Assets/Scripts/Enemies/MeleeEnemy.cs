@@ -14,6 +14,7 @@ public class OrcSystem : MonoBehaviour
     private Animator animator;
     private bool isRunning = false;
     private bool isAttacking = false;
+    private bool inMeleeRange = false;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class OrcSystem : MonoBehaviour
     private void Update()
     {
         // Verifica si el jugador está dentro del rango de ataque melee y si el enemigo puede atacar
-        if (Vector2.Distance(transform.position, playerHealth.transform.position) <= meleeAttackRange && canAttack)
+        if (inMeleeRange && canAttack)
         {
             // Realiza un ataque melee al jugador
             StartCoroutine(AttackCooldown());
@@ -41,7 +42,6 @@ public class OrcSystem : MonoBehaviour
             animator.SetBool("IsAttacking", isAttacking);
         }
     }
-
 
     private IEnumerator AttackCooldown()
     {
@@ -63,9 +63,29 @@ public class OrcSystem : MonoBehaviour
         animator.SetBool("IsAttacking", true);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("MeleeAttackTrigger"))
+        {
+            inMeleeRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("MeleeAttackTrigger"))
+        {
+            inMeleeRange = false;
+        }
+    }
+
     private void OnMouseDown()
     {
-        StartCoroutine(GetDamage());
+        CombatBehaviour combatBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<CombatBehaviour>();
+        if (combatBehaviour != null && combatBehaviour.IsMeleeMode() && inMeleeRange)
+        {
+            StartCoroutine(GetDamage());
+        }
     }
 
     public IEnumerator GetDamage()
@@ -75,15 +95,15 @@ public class OrcSystem : MonoBehaviour
         health -= damage;
         barraDeVidaOrco.UpdateHealthBar(maxHealth, health);
 
-        if (health > 0)
-        {
-            spriteRenderer.color = Color.red;
-            yield return new WaitForSeconds(damageDuration);
-            spriteRenderer.color = Color.white;
-        }
-        else
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
+
+        // No es necesario cambiar el color si el enemigo sigue vivo
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(damageDuration);
+        // No es necesario cambiar el color si el enemigo sigue vivo
+        spriteRenderer.color = Color.white;
     }
 }

@@ -17,7 +17,7 @@ public class RangeEnemy : MonoBehaviour
     public float health;
     private SpriteRenderer spriteRenderer;
     private Animator animator; // Referencia al componente Animator
-
+    private bool inMeleeRange = false;
     private void Start()
     {
         health = maxHealth;
@@ -104,9 +104,29 @@ public class RangeEnemy : MonoBehaviour
         playerHealth.Damage((int)rangedAttackDamage);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("MeleeAttackTrigger"))
+        {
+            inMeleeRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("MeleeAttackTrigger"))
+        {
+            inMeleeRange = false;
+        }
+    }
+
     private void OnMouseDown()
     {
-        StartCoroutine(GetDamage());
+        CombatBehaviour combatBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<CombatBehaviour>();
+        if (combatBehaviour != null && combatBehaviour.IsMeleeMode() && inMeleeRange)
+        {
+            StartCoroutine(GetDamage());
+        }
     }
 
     public IEnumerator GetDamage()
