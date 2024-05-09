@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 819, y: -441.7}
-  m_SizeDelta: {x: 203.7, y: 73.048}
+  m_AnchoredPosition: {x: 713, y: -332.08}
+  m_SizeDelta: {x: 191.3031, y: 47.368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280730228
 MonoBehaviour:
@@ -294,8 +294,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545, y: -441.7}
-  m_SizeDelta: {x: 204.7, y: 73.048}
+  m_AnchoredPosition: {x: 713.0003, y: -265}
+  m_SizeDelta: {x: 191.3, y: 47.368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &420475617
 MonoBehaviour:
@@ -812,7 +812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 204}
+  m_AnchoredPosition: {x: 0, y: 143}
   m_SizeDelta: {x: 354.9207, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432545756
@@ -1066,7 +1066,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 124}
+  m_AnchoredPosition: {x: 0, y: 59}
   m_SizeDelta: {x: 425.06, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925387973
@@ -1337,8 +1337,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -7}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.000013828, y: -49.418}
+  m_SizeDelta: {x: 89.5218, y: 98.8358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1991877516
 CanvasRenderer:
@@ -1436,8 +1436,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -278, y: -175.2}
-  m_SizeDelta: {x: 204.7, y: 73.05}
+  m_AnchoredPosition: {x: -269, y: -94.214}
+  m_SizeDelta: {x: 191.3, y: 47.3634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108143754
 MonoBehaviour:
