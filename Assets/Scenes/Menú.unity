@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsPanel: {fileID: 0}
+  mixer: {fileID: 24100000, guid: a08ca29d4119cb24f93749fbf71102fd, type: 2}
 --- !u!1 &727332795
 GameObject:
   m_ObjectHideFlags: 0
