@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
    public GameObject settingsPanel;
-  
+    public AudioMixer mixer;
    public void StartGame()
    {
         SceneManager.LoadScene(2);
@@ -41,5 +42,10 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Exiting");
         Application.Quit();
    }
+
+    public void ChangevolumeMaster(float v)
+    {
+        mixer.SetFloat("volMaster",v);
+    }
 
 }
