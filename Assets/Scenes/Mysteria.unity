@@ -39749,6 +39749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _velocidadCaminar: 4
+  movimientoSound: {fileID: 8300000, guid: a5393281d802d478ab0b6312a8ce750a, type: 3}
 --- !u!114 &8435846540927403712
 MonoBehaviour:
   m_ObjectHideFlags: 0

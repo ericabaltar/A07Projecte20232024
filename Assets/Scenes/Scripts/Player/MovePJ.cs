@@ -3,18 +3,27 @@
 public class MovePJ : MonoBehaviour
 {
     public float _velocidadCaminar;
+    public AudioClip movimientoSound; // Sonido de movimiento del personaje
 
     private SpriteRenderer _spriteRendererPersonaje;
     private Animator animator;
     private CombatBehaviour combatBehaviour;
+    private Rigidbody2D rb2d;
+    private AudioSource audioSource;
+    private bool isMoving = false;
 
     void Start()
     {
         _spriteRendererPersonaje = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
-        // Obtener la referencia al script CombatBehaviour
         combatBehaviour = GetComponent<CombatBehaviour>();
+        rb2d = GetComponent<Rigidbody2D>();
+
+        // Obtener la referencia al AudioSource y configurarlo
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = movimientoSound;
+        audioSource.loop = true; // Repetir el sonido en un bucle
+        audioSource.playOnAwake = false; // No reproducir el sonido automáticamente al iniciar
     }
 
     void Update()
@@ -31,10 +40,10 @@ public class MovePJ : MonoBehaviour
         float direccioX = Input.GetAxisRaw("Horizontal");
         float direccioY = Input.GetAxisRaw("Vertical");
         Vector2 direccioIndicada = new Vector2(direccioX, direccioY).normalized;
-        GetComponent<Rigidbody2D>().velocity = direccioIndicada * _velocidadCaminar;
+        rb2d.velocity = direccioIndicada * _velocidadCaminar;
 
         // Si la magnitud del vector de dirección es mayor que cero, el personaje está en movimiento
-        bool isMoving = direccioIndicada.magnitude > 0;
+        isMoving = direccioIndicada.magnitude > 0;
 
         _spriteRendererPersonaje.flipX = direccioX < 0;
 
@@ -54,7 +63,6 @@ public class MovePJ : MonoBehaviour
             animator.SetTrigger("MeleeAttack");
         }
 
-
         if (hasBow)
         {
             animator.SetBool("IsBow", true); // Establecer el parámetro IsBow en true si se tiene el arco
@@ -72,5 +80,16 @@ public class MovePJ : MonoBehaviour
         {
             animator.SetBool("IsIdle", false); // Establecer el parámetro IsIdle en false si no se está en modo de ataque cuerpo a cuerpo
         }
+
+        // Reproducir o detener el sonido de movimiento según el estado de movimiento del personaje
+        if (isMoving && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        else if (!isMoving && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 }
+
