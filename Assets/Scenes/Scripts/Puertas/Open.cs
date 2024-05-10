@@ -10,30 +10,40 @@ public class Open : MonoBehaviour
     public GameObject player;
     public GameObject Area;
     private List<GameObject> enemies = new List<GameObject>();
-    [SerializeField] private AudioClip Abrir;
-    [SerializeField] private AudioClip Cerrar;
+    [SerializeField] private AudioClip abrir;
+    [SerializeField] private AudioClip cerrar;
+    [SerializeField] private AudioClip musicaNormal;
+    [SerializeField] private AudioClip musicaBatalla;
+    private AudioSource ambienteAudioSource; // Para la m?sica de ambiente
+    private AudioSource batallaAudioSource; // Para la m?sica de batalla
     private Collider2D triggerCollider; // Referencia al collider del trigger
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Door1.SetActive(false);
         Door2.SetActive(false);
         triggerCollider = GetComponent<Collider2D>(); // Obtener el collider del trigger
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        // A?adir dos componentes AudioSource para reproducir la m?sica de ambiente y la m?sica de batalla
+        ambienteAudioSource = gameObject.AddComponent<AudioSource>();
+        ambienteAudioSource.clip = musicaNormal;
+        batallaAudioSource = gameObject.AddComponent<AudioSource>();
+        batallaAudioSource.clip = musicaBatalla;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == player)
         {
-            ControladorSonido.Instance.EjecutadorDeSonido(Abrir);
+            // Reproduce el sonido de abrir la puerta
+            ControladorSonido.Instance.EjecutadorDeSonido(abrir);
             OpenDoors();
+
+            // Detener la m?sica de batalla si est? sonando
+            batallaAudioSource.Stop();
+            // Reproducir la m?sica de ambiente si no est? sonando
+            if (!ambienteAudioSource.isPlaying)
+                ambienteAudioSource.Play();
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -48,8 +58,15 @@ public class Open : MonoBehaviour
             enemies.Remove(collision.gameObject);
             if (enemies.Count == 0)
             {
-                ControladorSonido.Instance.EjecutadorDeSonido(Cerrar);
+                // Reproduce el sonido de cerrar la puerta
+                ControladorSonido.Instance.EjecutadorDeSonido(cerrar);
                 CloseDoors();
+
+                // Detener la m?sica de ambiente si est? sonando
+                ambienteAudioSource.Stop();
+                // Reproducir la m?sica de batalla si no est? sonando
+                if (!batallaAudioSource.isPlaying)
+                    batallaAudioSource.Play();
             }
         }
     }
@@ -71,3 +88,5 @@ public class Open : MonoBehaviour
         Destroy(triggerCollider); // Destruir el collider del trigger junto con la puerta
     }
 }
+
+
