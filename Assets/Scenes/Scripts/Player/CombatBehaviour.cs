@@ -14,7 +14,10 @@ public class CombatBehaviour : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource; // Agregar esta variable
     public AudioClip tensarArcoSound; // Sonido de tensar el arco
-    public AudioClip cambioAtaqueSound; // Sonido de cambio de ataque
+    public AudioClip cambioAtaqueEspadaSound; // Sonido de cambio a ataque de espada
+    public AudioClip cambioAtaqueArcoSound; // Sonido de cambio a ataque de arco
+    public AudioClip ataqueDistanciaSound; // Sonido de ataque a distancia
+    public AudioClip ataqueMeleeSound; // Sonido de ataque melee
 
     void Start()
     {
@@ -24,7 +27,15 @@ public class CombatBehaviour : MonoBehaviour
         bowSpriteRenderer.enabled = false;
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>(); // Obtener el componente AudioSource
-        audioSource.clip = tensarArcoSound; // Asignar el clip de audio al AudioSource
+
+        if (audioSource == null)
+        {
+            Debug.LogError("No se encontró el componente AudioSource.");
+        }
+        else
+        {
+            audioSource.clip = tensarArcoSound; // Asignar el clip de audio al AudioSource
+        }
     }
 
     void Update()
@@ -41,7 +52,10 @@ public class CombatBehaviour : MonoBehaviour
                     bowSpriteRenderer.enabled = true; // Mostrar arco al recogerlo
                     Debug.Log("Arco recogido");
                     Destroy(hitCollider.gameObject); // Destruir el objeto "Bow"
-                    audioSource.PlayOneShot(cambioAtaqueSound); // Reproducir sonido de cambio de ataque
+                    if (audioSource != null && cambioAtaqueArcoSound != null)
+                    {
+                        audioSource.PlayOneShot(cambioAtaqueArcoSound); // Reproducir sonido de cambio a ataque de arco
+                    }
                     break;
                 }
             }
@@ -54,7 +68,17 @@ public class CombatBehaviour : MonoBehaviour
             Debug.Log("Modo de ataque cambiado a " + (melee ? "Melee" : "Distancia"));
             // Activar o desactivar el arco seg?n el modo de ataque
             bowSpriteRenderer.enabled = !melee;
-            audioSource.PlayOneShot(cambioAtaqueSound); // Reproducir sonido de cambio de ataque
+            if (audioSource != null)
+            {
+                if (melee && cambioAtaqueEspadaSound != null)
+                {
+                    audioSource.PlayOneShot(cambioAtaqueEspadaSound); // Reproducir sonido de cambio a ataque de espada
+                }
+                else if (!melee && cambioAtaqueArcoSound != null)
+                {
+                    audioSource.PlayOneShot(cambioAtaqueArcoSound); // Reproducir sonido de cambio a ataque de arco
+                }
+            }
         }
 
         if (hasBow && Input.GetMouseButtonDown(0))
@@ -63,11 +87,18 @@ public class CombatBehaviour : MonoBehaviour
             {
                 PerformMeleeAttack();
                 animator.SetTrigger("MeleeAttack"); // Activar la animaci?n de ataque cuerpo a cuerpo
+                if (audioSource != null && ataqueMeleeSound != null)
+                {
+                    audioSource.PlayOneShot(ataqueMeleeSound); // Reproducir sonido de ataque melee
+                }
             }
             else
             {
                 PerformRangedAttack();
-                audioSource.PlayOneShot(tensarArcoSound); // Reproducir el sonido de tensar el arco
+                if (audioSource != null && ataqueDistanciaSound != null)
+                {
+                    audioSource.PlayOneShot(ataqueDistanciaSound); // Reproducir sonido de ataque a distancia
+                }
             }
         }
 
@@ -128,4 +159,5 @@ public class CombatBehaviour : MonoBehaviour
         Gizmos.DrawWireCube(meleeAttackTrigger.bounds.center, meleeAttackTrigger.bounds.size);
     }
 }
+
 
