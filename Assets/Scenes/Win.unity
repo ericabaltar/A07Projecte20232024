@@ -355,6 +355,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671051521}
   m_CullTransparentMesh: 1
+--- !u!1 &791204511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 791204513}
+  - component: {fileID: 791204512}
+  m_Layer: 0
+  m_Name: Cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &791204512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791204511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924fbc2736cd1664bbc50ffeed732280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursorTexture: {fileID: 2800000, guid: 01bf920143236374bae2796a186e570d, type: 3}
+  clickedCursorTexture: {fileID: 2800000, guid: 79679ee01f3ffeb47b5b38fe082e1f06, type: 3}
+  enemyCursorTexture: {fileID: 2800000, guid: 146347091a67aa041bffa3bd98a5402d, type: 3}
+  cursorHotspot: {x: 0, y: 0}
+  clickSound: {fileID: 8300000, guid: 45772b7a8bd0c429e9af85cf500da901, type: 3}
+--- !u!4 &791204513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791204511}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -22.79133, y: 2.5378356, z: -0.068916515}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &839261735
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1033,7 @@ RectTransform:
   - {fileID: 1238778797}
   - {fileID: 671051522}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1312,5 +1361,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

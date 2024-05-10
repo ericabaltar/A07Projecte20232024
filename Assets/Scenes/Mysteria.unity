@@ -32979,6 +32979,7 @@ MonoBehaviour:
   clickedCursorTexture: {fileID: 2800000, guid: 79679ee01f3ffeb47b5b38fe082e1f06, type: 3}
   enemyCursorTexture: {fileID: 2800000, guid: 146347091a67aa041bffa3bd98a5402d, type: 3}
   cursorHotspot: {x: 0, y: 0}
+  clickSound: {fileID: 8300000, guid: 45772b7a8bd0c429e9af85cf500da901, type: 3}
 --- !u!4 &2017319720
 Transform:
   m_ObjectHideFlags: 0
