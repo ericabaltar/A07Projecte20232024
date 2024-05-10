@@ -16,7 +16,10 @@ public class OrcSystem : MonoBehaviour
     private bool isAttacking = false;
     private bool inMeleeRange = false;
     [SerializeField] private AudioClip attackSound; // Sonido de ataque del orco
+    [SerializeField] private AudioClip OrcoSoundDamage;
+    [SerializeField] private AudioClip OrcoSoundDead;
     private ControladorSonido controladorSonido; // Referencia al ControladorSonido
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -26,6 +29,8 @@ public class OrcSystem : MonoBehaviour
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBehaviour>();
         animator = GetComponent<Animator>();
         controladorSonido = ControladorSonido.Instance; // Obtener la instancia del ControladorSonido
+        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -110,11 +115,13 @@ public class OrcSystem : MonoBehaviour
 
         if (health <= 0)
         {
+            controladorSonido.EjecutadorDeSonido(OrcoSoundDead);
             Destroy(gameObject);
         }
 
         // No es necesario cambiar el color si el enemigo sigue vivo
         spriteRenderer.color = Color.red;
+        controladorSonido.EjecutadorDeSonido(OrcoSoundDamage);
         yield return new WaitForSeconds(damageDuration);
         // No es necesario cambiar el color si el enemigo sigue vivo
         spriteRenderer.color = Color.white;

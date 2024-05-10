@@ -525,6 +525,8 @@ MonoBehaviour:
   barraDeVidaOrco: {fileID: 5664720589806835850}
   maxHealth: 10
   attackSound: {fileID: 8300000, guid: c404b1c30580fea4a9ee09d38bc705d8, type: 3}
+  OrcoSoundDamage: {fileID: 8300000, guid: f1125d6cf39300e44ad65a09e73418aa, type: 3}
+  OrcoSoundDead: {fileID: 8300000, guid: 2f71beeb6450de54c9aa7ea4eeb40a93, type: 3}
 --- !u!61 &-2499296392900289868
 BoxCollider2D:
   m_ObjectHideFlags: 0
