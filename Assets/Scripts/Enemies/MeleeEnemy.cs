@@ -15,6 +15,8 @@ public class OrcSystem : MonoBehaviour
     private bool isRunning = false;
     private bool isAttacking = false;
     private bool inMeleeRange = false;
+    [SerializeField] private AudioClip attackSound; // Sonido de ataque del orco
+    private ControladorSonido controladorSonido; // Referencia al ControladorSonido
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class OrcSystem : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthBehaviour>();
         animator = GetComponent<Animator>();
+        controladorSonido = ControladorSonido.Instance; // Obtener la instancia del ControladorSonido
     }
 
     private void Update()
@@ -53,6 +56,12 @@ public class OrcSystem : MonoBehaviour
 
     private void AttackMelee()
     {
+        // Reproduce el sonido de ataque del orco si está asignado y hay un ControladorSonido
+        if (attackSound != null && controladorSonido != null)
+        {
+            controladorSonido.EjecutadorDeSonido(attackSound);
+        }
+
         // Realiza un ataque cuerpo a cuerpo al jugador
         Debug.Log("Enemy realiza un ataque cuerpo a cuerpo al jugador");
         playerHealth.Damage((int)meleeAttackDamage);
