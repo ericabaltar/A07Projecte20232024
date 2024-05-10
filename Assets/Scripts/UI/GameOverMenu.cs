@@ -18,7 +18,11 @@ public class GameOverMenu : MonoBehaviour
 
     public void ExitGame()
     {
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-    
+#endif
+#if UNITY_STANDALONE
+        Application.Quit();
+#endif
     }
 }
