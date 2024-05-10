@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UITutorial : MonoBehaviour
 {
-    public Sprite[] controlSprites; // Array que contiene las dos imágenes de los controles
+    public Sprite[] controlSprites; // Array que contiene las dos imï¿½genes de los controles
     private SpriteRenderer spriteRenderer;
     private int currentIndex = 0;
     private bool playerInside = false;
@@ -10,46 +10,46 @@ public class UITutorial : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // Desactivar la animación al inicio
+        // Desactivar la animaciï¿½n al inicio
         spriteRenderer.enabled = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Verificar si el objeto que entró en el trigger es el jugador
+        // Verificar si el objeto que entrï¿½ en el trigger es el jugador
         if (other.CompareTag("Player"))
         {
             playerInside = true;
-            // Activar la animación cuando el jugador entre en el trigger
+            // Activar la animaciï¿½n cuando el jugador entre en el trigger
             spriteRenderer.enabled = true;
-            // Comenzar la animación intercalada
+            // Comenzar la animaciï¿½n intercalada
             InvokeRepeating("ToggleControlSprite", 0f, 0.5f);
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        // Verificar si el objeto que salió del trigger es el jugador
+        // Verificar si el objeto que saliï¿½ del trigger es el jugador
         if (other.CompareTag("Player"))
         {
             playerInside = false;
-            // Desactivar la animación cuando el jugador salga del trigger
+            // Desactivar la animaciï¿½n cuando el jugador salga del trigger
             spriteRenderer.enabled = false;
-            // Detener la animación intercalada
+            // Detener la animaciï¿½n intercalada
             CancelInvoke("ToggleControlSprite");
-            // Restaurar el sprite por defecto cuando el jugador sale del área del trigger
+            // Restaurar el sprite por defecto cuando el jugador sale del ï¿½rea del trigger
             spriteRenderer.sprite = null;
         }
     }
 
     void ToggleControlSprite()
     {
-        // Mostrar los sprites solo si el jugador está dentro del trigger
+        // Mostrar los sprites solo si el jugador estï¿½ dentro del trigger
         if (playerInside)
         {
-            // Cambiar el sprite del objeto entre las dos imágenes
+            // Cambiar el sprite del objeto entre las dos imï¿½genes
             spriteRenderer.sprite = controlSprites[currentIndex];
-            // Alternar entre las dos imágenes
+            // Alternar entre las dos imï¿½genes
             currentIndex = (currentIndex + 1) % controlSprites.Length;
         }
     }
