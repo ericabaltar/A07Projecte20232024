@@ -13,6 +13,8 @@ public class RangeEnemy : MonoBehaviour
     [SerializeField] private ParticleSystem magicAttackParticles;
     [SerializeField] private AudioClip attackSound; // Sonido de ataque
     [SerializeField] private AudioClip magicAttackSound; // Sonido de las partículas de ataque
+    [SerializeField] private AudioClip SkeletonSoundDamage; 
+    [SerializeField] private AudioClip SkeletonSoundDead; 
     private HealthBehaviour playerHealth;
     private NavMeshAgent navMeshAgent;
     private bool canAttack = true;
@@ -21,6 +23,7 @@ public class RangeEnemy : MonoBehaviour
     private Animator animator;
     private bool inMeleeRange = false;
     private ControladorSonido controladorSonido; // Referencia al ControladorSonido
+    private AudioSource AudioSource;
 
     private void Start()
     {
@@ -33,6 +36,8 @@ public class RangeEnemy : MonoBehaviour
         navMeshAgent.updateUpAxis = false;
         animator = GetComponent<Animator>();
         controladorSonido = ControladorSonido.Instance; // Obtener la instancia del ControladorSonido
+        AudioSource = GetComponent<AudioSource>();
+        AudioSource = GetComponent<AudioSource>();
 
         magicAttackParticles.Stop();
     }
@@ -142,11 +147,20 @@ public class RangeEnemy : MonoBehaviour
         if (health > 0)
         {
             spriteRenderer.color = Color.red;
+            if(SkeletonSoundDamage != null && AudioSource != null)
+            {
+
+                controladorSonido.EjecutadorDeSonido(SkeletonSoundDamage);
+            }
             yield return new WaitForSeconds(damageDuration);
             spriteRenderer.color = Color.white;
         }
         else
         {
+            if (SkeletonSoundDead != null && AudioSource != null)
+            {
+                controladorSonido.EjecutadorDeSonido(SkeletonSoundDead);
+            }
             Destroy(gameObject);
         }
     }
