@@ -41059,6 +41059,8 @@ MonoBehaviour:
   barraDeVidaOrco: {fileID: 2324389303234355709}
   magicAttackParticles: {fileID: 2965139509966269817}
   attackCooldown: 2
+  BossSoundDamage: {fileID: 8300000, guid: e5d03c1e6d9739e49a158d18e156e9be, type: 3}
+  BossSoundDead: {fileID: 8300000, guid: 27e5830a6b6f6374db6419ec4970095c, type: 3}
 --- !u!212 &8598373221425432870
 SpriteRenderer:
   m_ObjectHideFlags: 0
