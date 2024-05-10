@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 174742702}
-  colectar1: {fileID: 8300000, guid: 51c2dc43564570149888fbdef8c2fa71, type: 3}
+  colectar1: {fileID: 0}
 --- !u!1001 &175389456
 PrefabInstance:
   m_ObjectHideFlags: 0
