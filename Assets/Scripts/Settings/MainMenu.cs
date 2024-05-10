@@ -8,44 +8,47 @@ public class MainMenu : MonoBehaviour
 {
    public GameObject settingsPanel;
     public AudioMixer mixer;
+
    public void StartGame()
    {
+  
         SceneManager.LoadScene(2);
    }
 
    public void OpenSettings()
    {
+
         //settingsPanel.SetActive(true);
         SceneManager.LoadScene(1);
    }
 
    public void CloseSettings()
    {
+
         //settingsPanel.SetActive(false);
         SceneManager.LoadScene(0);
    }
 
    public void OpenCredits()
     {
-       //settingsPanel.SetActive(true);
-       SceneManager.LoadScene(5);
+  
+        //settingsPanel.SetActive(true);
+        SceneManager.LoadScene(5);
     }
 
    public void CloseCredits()
     {
-       //settingsPanel.SetActive(false);
-       SceneManager.LoadScene(0);
+
+        //settingsPanel.SetActive(false);
+        SceneManager.LoadScene(0);
+
     }
 
    public void ExitGame()
    {
+
         Debug.Log("Exiting");
         Application.Quit();
    }
-
-    public void ChangevolumeMaster(float v)
-    {
-        mixer.SetFloat("volMaster",v);
-    }
 
 }
