@@ -22,6 +22,7 @@ public class GameOverMenu : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
 #if UNITY_STANDALONE
+        Debug.Log("Quit Game");
         Application.Quit();
 #endif
     }
