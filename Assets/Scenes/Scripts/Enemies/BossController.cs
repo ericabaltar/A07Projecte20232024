@@ -18,6 +18,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private BarraDeVidaOrco barraDeVidaOrco;
     [SerializeField] private ParticleSystem magicAttackParticles;
     [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private AudioClip BossSoundDamage;
+    [SerializeField] private AudioClip BossSoundDead;
     private HealthBehaviour playerHealth;
     private NavMeshAgent navMeshAgent;
     private bool canAttack = true;
@@ -25,6 +27,7 @@ public class BossController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private bool inMeleeRange = false;
+    private ControladorSonido controladorSonido;
 
     private void Start()
     {
@@ -37,6 +40,7 @@ public class BossController : MonoBehaviour
         navMeshAgent.updateUpAxis = false;
         magicAttackParticles.Stop();
         animator = GetComponent<Animator>();
+        controladorSonido = ControladorSonido.Instance;
     }
 
     private void Update()
@@ -129,6 +133,7 @@ public class BossController : MonoBehaviour
         if (health <= 0)
         {
             animator.SetTrigger("Die");
+            controladorSonido.EjecutadorDeSonido(BossSoundDead);
             yield return new WaitForSeconds(1.0f);
             Destroy(gameObject);
             SceneManager.LoadScene(4);
@@ -136,6 +141,7 @@ public class BossController : MonoBehaviour
         else
         {
             spriteRenderer.color = Color.red;
+            controladorSonido.EjecutadorDeSonido(BossSoundDamage);
             yield return new WaitForSeconds(damageDuration);
             spriteRenderer.color = Color.white;
         }
