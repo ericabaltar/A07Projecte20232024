@@ -35,11 +35,16 @@ public class EnemySpawner : MonoBehaviour
 
     Transform player;
 
+    AudioSource battleMusic; // Referencia al componente AudioSource que controla la música de batalla
+
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<CombatePJ>().transform;
         CalculateWaveQuota();
+
+        // Obtén el componente AudioSource que controla la música de batalla
+        battleMusic = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,18 +53,27 @@ public class EnemySpawner : MonoBehaviour
         spawnTimer += Time.deltaTime;
 
         //Comprueba si hay que spawnear otro enemigo
-
-        if(spawnTimer >= waves[currentWaveCount].spawnInterval)
+        if (spawnTimer >= waves[currentWaveCount].spawnInterval)
         {
             spawnTimer = 0f;
             SpawnEnemies();
+        }
+
+        // Comprueba si se han eliminado todos los enemigos de la oleada actual
+        if (waves[currentWaveCount].spawnCount >= waves[currentWaveCount].waveQuota)
+        {
+            // Si se han eliminado todos los enemigos, pausa la música de batalla
+            if (battleMusic.isPlaying)
+            {
+                battleMusic.Pause();
+            }
         }
     }
 
     void CalculateWaveQuota()
     {
         int CurrentWaveQuota = 0;
-        foreach(var enemyGroup in waves[currentWaveCount].enemyGroups)
+        foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
         {
             CurrentWaveQuota += enemyGroup.enemyCount;
         }
@@ -72,9 +86,9 @@ public class EnemySpawner : MonoBehaviour
     {
         if (waves[currentWaveCount].spawnCount < waves[currentWaveCount].waveQuota)
         {
-            foreach(var enemyGroup in waves[currentWaveCount].enemyGroups)
+            foreach (var enemyGroup in waves[currentWaveCount].enemyGroups)
             {
-                if(enemyGroup.spawnCount  < enemyGroup.enemyCount)
+                if (enemyGroup.spawnCount < enemyGroup.enemyCount)
                 {
                     Vector2 spawnPosition = new Vector2(player.transform.position.x + Random.Range(-10f, 10f), player.transform.position.y + Random.Range(-10f, 10f));
                     Instantiate(enemyGroup.enemyPrefab, spawnPosition, Quaternion.identity);
@@ -83,8 +97,13 @@ public class EnemySpawner : MonoBehaviour
                     waves[currentWaveCount].spawnCount++;
                 }
             }
+
+            // Si la música de batalla no está sonando, actívala
+            if (!battleMusic.isPlaying)
+            {
+                battleMusic.Play();
+            }
         }
-        
     }
 }
- 
+
