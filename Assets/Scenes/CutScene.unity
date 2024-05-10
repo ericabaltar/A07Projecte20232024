@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.0627451, g: 0.078431375, b: 0.0627451, a: 1}
+  m_BackGroundColor: {r: 0.08627451, g: 0.078431375, b: 0.07450981, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -184,7 +184,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.80497
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -208,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193499811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: 0.65, z: -10}
+  m_LocalPosition: {x: -0.71, y: 0.71, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &871590117
 Animator:
   serializedVersion: 5
@@ -547,10 +547,10 @@ RectTransform:
   m_Father: {fileID: 871590121}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_SizeDelta: {x: 1102, y: 657}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1548551368
 MonoBehaviour:
@@ -962,6 +962,14 @@ PlayableDirector:
   - key: {fileID: 889715650708671423, guid: d431310c6b684f547ba16470a20ffb10, type: 2}
     value: {fileID: 342809874}
   - key: {fileID: -4518438899755980472, guid: d431310c6b684f547ba16470a20ffb10, type: 2}
+    value: {fileID: 871590117}
+  - key: {fileID: 7169311913419580453, guid: d431310c6b684f547ba16470a20ffb10, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6362750726709171900, guid: d431310c6b684f547ba16470a20ffb10, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5933885470812247855, guid: d431310c6b684f547ba16470a20ffb10, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6200322556467417239, guid: d431310c6b684f547ba16470a20ffb10, type: 2}
     value: {fileID: 871590117}
   m_ExposedReferences:
     m_References: []

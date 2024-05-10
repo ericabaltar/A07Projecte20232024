@@ -9,9 +9,4 @@ public class WinMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    public void ExitGame()
-    {
-        UnityEditor.EditorApplication.isPlaying = false;
-
-    }
 }

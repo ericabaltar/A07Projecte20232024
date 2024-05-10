@@ -9049,7 +9049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280294605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.16, y: 1.93, z: -10}
+  m_LocalPosition: {x: 5.31, y: -33.45, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9453,7 +9453,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: af3eb7d529685a043a0b762eee1063bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -39281,7 +39281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9174772569985179885}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.16, y: 1.93, z: 0}
+  m_LocalPosition: {x: 5.31, y: -33.45, z: 0}
   m_LocalScale: {x: 3.7820961, y: 3.7242467, z: 3.5115535}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39331,11 +39331,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeAttackDamage: 10
   meleeAttackRange: 2
-  rangedAttackDamage: 10
+  rangedAttackDamage: 20
   rangedAttackRange: 4
   followRange: 10
   desiredDistance: 4
-  maxHealth: 10
+  maxHealth: 200
   barraDeVidaOrco: {fileID: 2324389303234355709}
   magicAttackParticles: {fileID: 2965139509966269817}
   attackCooldown: 2
