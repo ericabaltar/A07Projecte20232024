@@ -11,7 +11,10 @@ public class CombatBehaviour : MonoBehaviour
     public bool hasBow = false;
     private SpriteRenderer spriteRenderer;
     private SpriteRenderer bowSpriteRenderer;
-    private Animator animator; // Agregar esta variable
+    private Animator animator;
+    private AudioSource audioSource; // Agregar esta variable
+    public AudioClip tensarArcoSound; // Sonido de tensar el arco
+    public AudioClip cambioAtaqueSound; // Sonido de cambio de ataque
 
     void Start()
     {
@@ -19,7 +22,9 @@ public class CombatBehaviour : MonoBehaviour
         bowSpriteRenderer = bow.GetComponent<SpriteRenderer>();
         // Ocultar el arco al inicio
         bowSpriteRenderer.enabled = false;
-        animator = GetComponent<Animator>(); // Obtener el componente Animator
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>(); // Obtener el componente AudioSource
+        audioSource.clip = tensarArcoSound; // Asignar el clip de audio al AudioSource
     }
 
     void Update()
@@ -36,6 +41,7 @@ public class CombatBehaviour : MonoBehaviour
                     bowSpriteRenderer.enabled = true; // Mostrar arco al recogerlo
                     Debug.Log("Arco recogido");
                     Destroy(hitCollider.gameObject); // Destruir el objeto "Bow"
+                    audioSource.PlayOneShot(cambioAtaqueSound); // Reproducir sonido de cambio de ataque
                     break;
                 }
             }
@@ -46,8 +52,9 @@ public class CombatBehaviour : MonoBehaviour
         {
             melee = !melee;
             Debug.Log("Modo de ataque cambiado a " + (melee ? "Melee" : "Distancia"));
-            // Activar o desactivar el arco según el modo de ataque
+            // Activar o desactivar el arco seg?n el modo de ataque
             bowSpriteRenderer.enabled = !melee;
+            audioSource.PlayOneShot(cambioAtaqueSound); // Reproducir sonido de cambio de ataque
         }
 
         if (hasBow && Input.GetMouseButtonDown(0))
@@ -55,11 +62,12 @@ public class CombatBehaviour : MonoBehaviour
             if (melee)
             {
                 PerformMeleeAttack();
-                animator.SetTrigger("MeleeAttack"); // Activar la animación de ataque cuerpo a cuerpo
+                animator.SetTrigger("MeleeAttack"); // Activar la animaci?n de ataque cuerpo a cuerpo
             }
             else
             {
                 PerformRangedAttack();
+                audioSource.PlayOneShot(tensarArcoSound); // Reproducir el sonido de tensar el arco
             }
         }
 
@@ -89,11 +97,11 @@ public class CombatBehaviour : MonoBehaviour
         {
             if (hitCollider.CompareTag("Enemy"))
             {
-                // Verificar si el enemigo está dentro del área del trigger
+                // Verificar si el enemigo est? dentro del ?rea del trigger
                 if (meleeAttackTrigger.bounds.Contains(hitCollider.transform.position))
                 {
                     Debug.Log("Realizando ataque cuerpo a cuerpo a " + hitCollider.name);
-                    // Lógica de daño cuerpo a cuerpo
+                    // L?gica de da?o cuerpo a cuerpo
                 }
             }
         }
@@ -113,10 +121,11 @@ public class CombatBehaviour : MonoBehaviour
         }
     }
 
-    // Visualización del rango de ataque cuerpo a cuerpo en el editor
+    // Visualizaci?n del rango de ataque cuerpo a cuerpo en el editor
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(meleeAttackTrigger.bounds.center, meleeAttackTrigger.bounds.size);
     }
 }
+
