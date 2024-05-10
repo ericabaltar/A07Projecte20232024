@@ -10733,6 +10733,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoUI: {fileID: 0}
+  ParchmentOpen: {fileID: 8300000, guid: 85e52a1c3175ef846ae7fe88121cceaa, type: 3}
+  ParchmentClose: {fileID: 8300000, guid: e23b521b6aa4117499ffdb649661e2e8, type: 3}
 --- !u!61 &1401244469
 BoxCollider2D:
   m_ObjectHideFlags: 0

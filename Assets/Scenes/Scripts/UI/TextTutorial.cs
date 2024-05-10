@@ -5,11 +5,14 @@ using UnityEngine.UI;
 public class TextTutorial : MonoBehaviour
 {
     public TextMeshProUGUI textoUI; // Referencia al objeto de texto UI que quieres mostrar
-
+    [SerializeField] private AudioClip ParchmentOpen;
+    [SerializeField] private AudioClip ParchmentClose;
+        private ControladorSonido controladorSonido;
     void Start()
     {
         // Al inicio, asegúrate de que el texto esté desactivado
         textoUI.enabled = false;
+        controladorSonido = ControladorSonido.Instance;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -19,6 +22,7 @@ public class TextTutorial : MonoBehaviour
         {
             // Mostrar el texto UI
             textoUI.enabled = true;
+            controladorSonido.EjecutadorDeSonido(ParchmentOpen);
         }
     }
 
@@ -29,6 +33,7 @@ public class TextTutorial : MonoBehaviour
         {
             // Ocultar el texto UI
             textoUI.enabled = false;
+            controladorSonido.EjecutadorDeSonido(ParchmentClose);
         }
     }
 }
