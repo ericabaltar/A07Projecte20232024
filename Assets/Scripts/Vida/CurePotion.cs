@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Potion : MonoBehaviour
 {
+    [SerializeField] private AudioClip colectar1;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Si el jugador entra en contacto con la poción
         if (other.CompareTag("Player"))
         {
+
+            ControladorSonido.Instance.EjecutadorDeSonido(colectar1);
+
             // Obtener el componente de salud del jugador
             HealthBehaviour playerHealth = other.GetComponent<HealthBehaviour>();
 
@@ -21,6 +26,8 @@ public class Potion : MonoBehaviour
                 // Desactivar la poción para que no pueda ser recogida nuevamente
                 gameObject.SetActive(false);
             }
+
+           
         }
     }
 }

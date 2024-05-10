@@ -10,24 +10,29 @@ public class Open : MonoBehaviour
     public GameObject player;
     public GameObject Area;
     private List<GameObject> enemies = new List<GameObject>();
+    [SerializeField] private AudioClip Abrir;
+    [SerializeField] private AudioClip Cerrar;
+    private Collider2D triggerCollider; // Referencia al collider del trigger
 
     // Start is called before the first frame update
     void Start()
     {
         Door1.SetActive(false);
         Door2.SetActive(false);
+        triggerCollider = GetComponent<Collider2D>(); // Obtener el collider del trigger
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == player)
         {
+            ControladorSonido.Instance.EjecutadorDeSonido(Abrir);
             OpenDoors();
         }
         else if (collision.gameObject.CompareTag("Enemy"))
@@ -43,6 +48,7 @@ public class Open : MonoBehaviour
             enemies.Remove(collision.gameObject);
             if (enemies.Count == 0)
             {
+                ControladorSonido.Instance.EjecutadorDeSonido(Cerrar);
                 CloseDoors();
             }
         }
@@ -62,5 +68,6 @@ public class Open : MonoBehaviour
     {
         Destroy(Door1);
         Destroy(Door2);
+        Destroy(triggerCollider); // Destruir el collider del trigger junto con la puerta
     }
 }

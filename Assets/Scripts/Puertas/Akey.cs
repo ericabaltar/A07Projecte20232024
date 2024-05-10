@@ -7,8 +7,8 @@ public class Akey : MonoBehaviour
     public GameObject key;
     public GameObject Player;
     public string playername;
-public GameObject door;
-    
+    public GameObject door;
+    [SerializeField] private AudioClip colectar1; 
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +24,12 @@ public GameObject door;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.name == playername)
-        //
-        Destroy(key);
-Destroy(door);
+        {
+            ControladorSonido.Instance.EjecutadorDeSonido(colectar1);
+            //
+            Destroy(key);
+            Destroy(door);
+        }
+       
     }
 }
