@@ -16,6 +16,7 @@ public class HealthBehaviour : MonoBehaviour
 
     private int totalDamageTaken = 0;
     private Coroutine damageCoroutine;
+    private AudioSource PJDamageSound;
 
     private void Start()
     {
@@ -24,6 +25,8 @@ public class HealthBehaviour : MonoBehaviour
         health = maxHealth;
 
         UpdateHealthBarColor();
+
+        PJDamageSound = GetComponent<AudioSource>();
     }
 
     public void Damage()
@@ -34,12 +37,16 @@ public class HealthBehaviour : MonoBehaviour
     public void Damage(int damageVal)
     {
         this.health -= damageVal;
+       
         totalDamageTaken += damageVal;
         OnHealthAltered.Invoke(health, maxHealth);
         if (this.health <= 0)
             Die();
 
         UpdateHealthBarColor();
+
+        if(PJDamageSound != null)
+            PJDamageSound.Play();
 
         // Reiniciar el contador de daño si ya se está ejecutando
         if (damageCoroutine != null)
