@@ -12,7 +12,9 @@ public class Open : MonoBehaviour
     private List<GameObject> enemies = new List<GameObject>();
     [SerializeField] private AudioClip abrir;
     [SerializeField] private AudioClip cerrar;
+    [SerializeField] private AudioClip musicaNormal;
     [SerializeField] private AudioClip musicaBatalla;
+    private AudioSource ambienteAudioSource; // Para la m?sica de ambiente
     private AudioSource batallaAudioSource; // Para la m?sica de batalla
     private Collider2D triggerCollider; // Referencia al collider del trigger
 
@@ -23,6 +25,8 @@ public class Open : MonoBehaviour
         triggerCollider = GetComponent<Collider2D>(); // Obtener el collider del trigger
 
         // A?adir dos componentes AudioSource para reproducir la m?sica de ambiente y la m?sica de batalla
+        ambienteAudioSource = gameObject.AddComponent<AudioSource>();
+        ambienteAudioSource.clip = musicaNormal;
         batallaAudioSource = gameObject.AddComponent<AudioSource>();
         batallaAudioSource.clip = musicaBatalla;
     }
@@ -35,9 +39,11 @@ public class Open : MonoBehaviour
             ControladorSonido.Instance.EjecutadorDeSonido(abrir);
             OpenDoors();
 
-
-            batallaAudioSource.Play();
-
+            // Detener la m?sica de batalla si est? sonando
+            batallaAudioSource.Stop();
+            // Reproducir la m?sica de ambiente si no est? sonando
+            if (!ambienteAudioSource.isPlaying)
+                ambienteAudioSource.Play();
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -56,9 +62,11 @@ public class Open : MonoBehaviour
                 ControladorSonido.Instance.EjecutadorDeSonido(cerrar);
                 CloseDoors();
 
-
-                batallaAudioSource.Stop();
-
+                // Detener la m?sica de ambiente si est? sonando
+                ambienteAudioSource.Stop();
+                // Reproducir la m?sica de batalla si no est? sonando
+                if (!batallaAudioSource.isPlaying)
+                    batallaAudioSource.Play();
             }
         }
     }
@@ -80,3 +88,5 @@ public class Open : MonoBehaviour
         Destroy(triggerCollider); // Destruir el collider del trigger junto con la puerta
     }
 }
+
+

@@ -44,10 +44,5 @@ public class MenuPausa : MonoBehaviour
         Time.timeScale = 1f; // Reanuda el tiempo del juego
     }
 
-    public void Menu()
-    {
-        SceneManager.LoadScene(0);
-    }
-
 }
 

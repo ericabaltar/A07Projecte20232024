@@ -13,7 +13,6 @@ public class HealthBehaviour : MonoBehaviour
     public UnityEvent OnDie;
 
     public Image healthBar;
-    public SpriteRenderer characterSpriteRenderer; // Referencia al SpriteRenderer del personaje
 
     private int totalDamageTaken = 0;
     private Coroutine damageCoroutine;
@@ -49,17 +48,18 @@ public class HealthBehaviour : MonoBehaviour
         if (PJDamageSound != null)
             PJDamageSound.Play();
 
-        // Cambia el color del personaje a rojo cuando recibe daño
-        StartCoroutine(FlashRed());
+        // Reiniciar el contador de daño si ya se está ejecutando
+        if (damageCoroutine != null)
+            StopCoroutine(damageCoroutine);
+        damageCoroutine = StartCoroutine(ResetDamageAfterDelay());
     }
 
-    private IEnumerator FlashRed()
+    private IEnumerator ResetDamageAfterDelay()
     {
-        // Cambia el color del personaje a rojo
-        characterSpriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.1f); // Mantén el color rojo durante 0.1 segundos
-        // Restaura el color original del personaje
-        characterSpriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(2f);
+
+        // Limpiar el texto después de 2 segundos
+        totalDamageTaken = 0; // Reiniciar el total de daño acumulado
     }
 
     private void UpdateHealthBarColor()
