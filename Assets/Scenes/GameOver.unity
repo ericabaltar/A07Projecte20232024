@@ -162,7 +162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 694, y: -327.7}
+  m_AnchoredPosition: {x: 1199, y: -710}
   m_SizeDelta: {x: 191.3031, y: 47.368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280730228
@@ -406,7 +406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 694, y: -271}
+  m_AnchoredPosition: {x: 948, y: -710.6}
   m_SizeDelta: {x: 191.3, y: 47.368}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &420475617
@@ -1322,7 +1322,6 @@ GameObject:
   - component: {fileID: 1468694080}
   - component: {fileID: 1468694079}
   - component: {fileID: 1468694083}
-  - component: {fileID: 1468694084}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1836,7 +1835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -267, y: -137.2}
+  m_AnchoredPosition: {x: -267, y: -169.8}
   m_SizeDelta: {x: 191.3, y: 47.3634}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108143754

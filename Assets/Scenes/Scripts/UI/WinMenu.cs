@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class WinMenu : MonoBehaviour
 {
-    public void Settings()
+    public void Menu()
     {
+
         SceneManager.LoadScene(0);
     }
 }
