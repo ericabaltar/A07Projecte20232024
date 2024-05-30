@@ -10,6 +10,7 @@ TagManager:
   - MeleeAttackTrigger
   - Door
   - Bow
+  - Wall
   layers:
   - Default
   - TransparentFX

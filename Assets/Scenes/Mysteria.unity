@@ -25871,7 +25871,7 @@ GameObject:
   - component: {fileID: 1680793087}
   m_Layer: 0
   m_Name: Paredes
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35913,6 +35913,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   healthBar: {fileID: 2299976404425062277}
+  characterSpriteRenderer: {fileID: 1807711883769897017}
 --- !u!198 &2965139509966269817
 ParticleSystem:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class Arrow : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
-        StartCoroutine(DestroyAfterDelay(lifetime));
+    
 
         if (appearSound != null && audioSource != null)
         {
@@ -43,13 +43,13 @@ public class Arrow : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
     }
 
-    IEnumerator DestroyAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(gameObject);
-    }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -60,4 +60,3 @@ public class Arrow : MonoBehaviour
         }
     }
 }
-

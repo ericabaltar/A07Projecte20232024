@@ -11,6 +11,7 @@ public class MovePJ : MonoBehaviour
     private Rigidbody2D rb2d;
     private AudioSource audioSource;
     private bool isMoving = false;
+    private Vector2 ultimaDireccion; // Variable para almacenar la última dirección de movimiento
 
     void Start()
     {
@@ -24,13 +25,15 @@ public class MovePJ : MonoBehaviour
         audioSource.clip = movimientoSound;
         audioSource.loop = true; // Repetir el sonido en un bucle
         audioSource.playOnAwake = false; // No reproducir el sonido automáticamente al iniciar
+
+        ultimaDireccion = Vector2.right; // Dirección inicial (derecha)
     }
 
     void Update()
     {
         //Trobar costats pantalla
-        Vector2 minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(x: 0, y: 0));
-        Vector2 maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(x: 1, y: 1));
+        Vector2 minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        Vector2 maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
         minPantalla.x += 0.6f;
         maxPantalla.x -= 0.6f;
@@ -45,7 +48,21 @@ public class MovePJ : MonoBehaviour
         // Si la magnitud del vector de dirección es mayor que cero, el personaje está en movimiento
         isMoving = direccioIndicada.magnitude > 0;
 
-        _spriteRendererPersonaje.flipX = direccioX < 0;
+        // Actualizar la última dirección solo si hay movimiento
+        if (isMoving)
+        {
+            ultimaDireccion = direccioIndicada;
+        }
+
+        // Flip el sprite basado en la última dirección
+        if (ultimaDireccion.x < 0)
+        {
+            _spriteRendererPersonaje.flipX = true;
+        }
+        else if (ultimaDireccion.x > 0)
+        {
+            _spriteRendererPersonaje.flipX = false;
+        }
 
         // Acceder a las variables melee y hasBow del script CombatBehaviour
         bool melee = combatBehaviour.IsMeleeMode();
@@ -92,4 +109,3 @@ public class MovePJ : MonoBehaviour
         }
     }
 }
-
