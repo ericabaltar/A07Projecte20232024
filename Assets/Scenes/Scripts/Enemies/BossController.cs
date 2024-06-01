@@ -28,7 +28,10 @@ public class BossController : MonoBehaviour
     private Animator animator;
     private bool inMeleeRange = false;
     private ControladorSonido controladorSonido;
-
+    private CanvasGroup canvasGroup;
+    private float alphaTimer = 0f;
+    private float holdDuration = 0.5f;
+    private bool AlphaChanged = false;
     private void Start()
     {
         health = maxHealth;
@@ -41,6 +44,7 @@ public class BossController : MonoBehaviour
         magicAttackParticles.Stop();
         animator = GetComponent<Animator>();
         controladorSonido = ControladorSonido.Instance;
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
     }
 
     private void Update()
@@ -76,6 +80,15 @@ public class BossController : MonoBehaviour
         else
         {
             navMeshAgent.SetDestination(transform.position);
+        }
+        if (AlphaChanged)
+        {
+            alphaTimer += Time.deltaTime;
+            if (alphaTimer >= holdDuration)
+            {
+                canvasGroup.alpha = 0;
+                AlphaChanged = false;
+            }
         }
     }
 
@@ -125,6 +138,9 @@ public class BossController : MonoBehaviour
 
     private IEnumerator GetDamage()
     {
+        canvasGroup.alpha = 1;
+        AlphaChanged = true;
+        alphaTimer = 0f;
         float damageDuration = 0.1f;
         float damage = UnityEngine.Random.Range(1f, 5f);
         health -= damage;

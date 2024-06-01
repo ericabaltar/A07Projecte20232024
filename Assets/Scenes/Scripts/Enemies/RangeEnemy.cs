@@ -25,6 +25,9 @@ public class RangeEnemy : MonoBehaviour
     private ControladorSonido controladorSonido; // Referencia al ControladorSonido
     private AudioSource AudioSource;
     private CanvasGroup canvasGroup;
+    private float alphaTimer = 0f;
+    private float holdDuration = 0.5f;
+    private bool AlphaChanged = false;
 
     private void Start()
     {
@@ -75,6 +78,15 @@ public class RangeEnemy : MonoBehaviour
         else
         {
             navMeshAgent.SetDestination(transform.position);
+        }
+        if (AlphaChanged)
+        {
+            alphaTimer += Time.deltaTime;
+            if (alphaTimer >= holdDuration)
+            {
+                canvasGroup.alpha = 0;  
+                AlphaChanged = false;
+            }
         }
     }
 
@@ -143,6 +155,8 @@ public class RangeEnemy : MonoBehaviour
     public IEnumerator GetDamage()
     {
         canvasGroup.alpha = 1;
+        AlphaChanged = true;
+        alphaTimer = 0f;
         float damageDuration = 0.1f;
         float damage = UnityEngine.Random.Range(1f, 5f);
         health -= damage;

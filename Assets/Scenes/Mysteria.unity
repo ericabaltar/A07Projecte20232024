@@ -40467,6 +40467,7 @@ GameObject:
   - component: {fileID: 822640035576802032}
   - component: {fileID: 8836905986859544471}
   - component: {fileID: 2324389303234355709}
+  - component: {fileID: 8836905986859544472}
   m_Layer: 5
   m_Name: BarraDeVidaOrco
   m_TagString: Untagged
@@ -41310,6 +41311,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &8836905986859544472
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3397731464079302874}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!61 &8999149279414892070
 BoxCollider2D:
   m_ObjectHideFlags: 0
