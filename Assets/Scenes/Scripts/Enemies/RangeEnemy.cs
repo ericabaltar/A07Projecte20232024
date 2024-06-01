@@ -24,6 +24,7 @@ public class RangeEnemy : MonoBehaviour
     private bool inMeleeRange = false;
     private ControladorSonido controladorSonido; // Referencia al ControladorSonido
     private AudioSource AudioSource;
+    private CanvasGroup canvasGroup;
 
     private void Start()
     {
@@ -38,6 +39,7 @@ public class RangeEnemy : MonoBehaviour
         controladorSonido = ControladorSonido.Instance; // Obtener la instancia del ControladorSonido
         AudioSource = GetComponent<AudioSource>();
         AudioSource = GetComponent<AudioSource>();
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
 
         magicAttackParticles.Stop();
     }
@@ -133,12 +135,14 @@ public class RangeEnemy : MonoBehaviour
         CombatBehaviour combatBehaviour = GameObject.FindGameObjectWithTag("Player").GetComponent<CombatBehaviour>();
         if (combatBehaviour != null && combatBehaviour.IsMeleeMode() && inMeleeRange)
         {
+           
             StartCoroutine(GetDamage());
         }
     }
 
     public IEnumerator GetDamage()
     {
+        canvasGroup.alpha = 1;
         float damageDuration = 0.1f;
         float damage = UnityEngine.Random.Range(1f, 5f);
         health -= damage;
