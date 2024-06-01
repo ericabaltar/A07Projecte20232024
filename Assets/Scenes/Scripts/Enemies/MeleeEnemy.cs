@@ -20,7 +20,10 @@ public class OrcSystem : MonoBehaviour
     [SerializeField] private AudioClip OrcoSoundDead;
     private ControladorSonido controladorSonido; // Referencia al ControladorSonido
     private AudioSource audioSource;
-
+    private CanvasGroup canvasGroup;
+    private float alphaTimer = 0f;
+    private float holdDuration = 0.5f;
+    private bool AlphaChanged = false;
     private void Start()
     {
         health = maxHealth;
@@ -31,6 +34,7 @@ public class OrcSystem : MonoBehaviour
         controladorSonido = ControladorSonido.Instance; // Obtener la instancia del ControladorSonido
         audioSource = GetComponent<AudioSource>();
         audioSource = GetComponent<AudioSource>();
+        canvasGroup = GetComponentInChildren<CanvasGroup>();
     }
 
     private void Update()
@@ -48,6 +52,15 @@ public class OrcSystem : MonoBehaviour
             isAttacking = false;
             animator.SetBool("IsRunning", isRunning);
             animator.SetBool("IsAttacking", isAttacking);
+        }
+        if (AlphaChanged)
+        {
+            alphaTimer += Time.deltaTime;
+            if (alphaTimer >= holdDuration)
+            {
+                canvasGroup.alpha = 0;
+                AlphaChanged = false;
+            }
         }
     }
 
@@ -108,6 +121,9 @@ public class OrcSystem : MonoBehaviour
 
     public IEnumerator GetDamage()
     {
+        canvasGroup.alpha = 1;
+        AlphaChanged = true;
+        alphaTimer = 0f;
         float damageDuration = 0.1f;
         float damage = UnityEngine.Random.Range(1f, 5f);
         health -= damage;
