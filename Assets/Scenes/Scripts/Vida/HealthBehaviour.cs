@@ -31,6 +31,14 @@ public class HealthBehaviour : MonoBehaviour
         PJDamageSound = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestoreMaxHealth();
+        }
+    }
+
     public void Damage()
     {
         Damage(1);
@@ -83,7 +91,7 @@ public class HealthBehaviour : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-    // Método para restaurar la salud al máximo al recoger una poción
+    // Método para restaurar la salud al máximo
     public void RestoreMaxHealth()
     {
         health = maxHealth;
@@ -91,3 +99,4 @@ public class HealthBehaviour : MonoBehaviour
         UpdateHealthBarColor();
     }
 }
+
