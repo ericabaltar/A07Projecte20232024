@@ -20,6 +20,11 @@ public class BossController : MonoBehaviour
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private AudioClip BossSoundDamage;
     [SerializeField] private AudioClip BossSoundDead;
+    [Header("Minion Settings")]
+    [SerializeField] public GameObject minionPrefab1;
+    [SerializeField] public GameObject minionPrefab2;
+    [SerializeField] public Transform[] minionSpawnPoints;  // Array of Transform to specify exact spawn points
+    private bool minionsSummoned = false;
     private HealthBehaviour playerHealth;
     private NavMeshAgent navMeshAgent;
     private bool canAttack = true;
@@ -32,6 +37,7 @@ public class BossController : MonoBehaviour
     private float alphaTimer = 0f;
     private float holdDuration = 0.5f;
     private bool AlphaChanged = false;
+
     private void Start()
     {
         health = maxHealth;
@@ -81,6 +87,7 @@ public class BossController : MonoBehaviour
         {
             navMeshAgent.SetDestination(transform.position);
         }
+
         if (AlphaChanged)
         {
             alphaTimer += Time.deltaTime;
@@ -135,7 +142,6 @@ public class BossController : MonoBehaviour
         }
     }
 
-
     private IEnumerator GetDamage()
     {
         canvasGroup.alpha = 1;
@@ -156,10 +162,29 @@ public class BossController : MonoBehaviour
         }
         else
         {
+            if (!minionsSummoned && health <= maxHealth / 2)
+            {
+                SummonMinions();
+            }
             spriteRenderer.color = Color.red;
             controladorSonido.EjecutadorDeSonido(BossSoundDamage);
             yield return new WaitForSeconds(damageDuration);
             spriteRenderer.color = Color.white;
+        }
+    }
+
+    private void SummonMinions()
+    {
+        Debug.Log("Boss invoca esbirros");
+        if (minionSpawnPoints.Length >= 2)
+        {
+            minionsSummoned = true;
+            Instantiate(minionPrefab1, minionSpawnPoints[0].position, Quaternion.identity);
+            Instantiate(minionPrefab2, minionSpawnPoints[1].position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Not enough spawn points assigned for minions");
         }
     }
 
@@ -179,7 +204,6 @@ public class BossController : MonoBehaviour
         {
             inMeleeRange = true;
         }
-    
         else if (other.CompareTag("Arrow"))
         {
             StartCoroutine(GetDamage());
@@ -193,6 +217,4 @@ public class BossController : MonoBehaviour
             inMeleeRange = false;
         }
     }
-
-
 }

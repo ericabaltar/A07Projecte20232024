@@ -452,7 +452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33, y: -166}
+  m_AnchoredPosition: {x: -246, y: -166}
   m_SizeDelta: {x: 364.96265, y: 101.334}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &486964585
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Gerard Doblas
+  m_text: "Gerard Doblas\t    Pau D\xEDaz"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a710242e1e37e914dbc93bb2efdfdf3e, type: 2}
   m_sharedMaterial: {fileID: -2902742133430044947, guid: a710242e1e37e914dbc93bb2efdfdf3e, type: 2}
@@ -538,7 +538,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -222.33008, y: 0, z: -154.83948, w: 0}
+  m_margin: {x: -222.33008, y: 0, z: -658.0596, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1201,7 +1201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 7}
+  m_AnchoredPosition: {x: -54, y: 7}
   m_SizeDelta: {x: 364.96265, y: 101.334}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1470557242
@@ -1224,7 +1224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Erica Baltar
+  m_text: "Erica Baltar\tMinghao Li"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a710242e1e37e914dbc93bb2efdfdf3e, type: 2}
   m_sharedMaterial: {fileID: -2902742133430044947, guid: a710242e1e37e914dbc93bb2efdfdf3e, type: 2}
@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -273.6371, y: 0, z: -5.8049164, w: 0}
+  m_margin: {x: -273.6371, y: 0, z: -414.01154, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1504,7 +1504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 174}
+  m_AnchoredPosition: {x: -22, y: 174}
   m_SizeDelta: {x: 364.96265, y: 101.334}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021137879
@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nerea Alonso
+  m_text: "Nerea Alonso\tChengguang Ji"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a710242e1e37e914dbc93bb2efdfdf3e, type: 2}
   m_sharedMaterial: {fileID: -2902742133430044947, guid: a710242e1e37e914dbc93bb2efdfdf3e, type: 2}
@@ -1590,7 +1590,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -327.38727, y: 0, z: -5.8049164, w: 0}
+  m_margin: {x: -327.38727, y: 0, z: -431.6063, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
