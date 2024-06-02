@@ -28,7 +28,7 @@ public class Akey : MonoBehaviour
             ControladorSonido.Instance.EjecutadorDeSonido(colectar1);
             //
             Destroy(key);
-            //Destroy(door);
+            Destroy(door);
         }
        
     }
