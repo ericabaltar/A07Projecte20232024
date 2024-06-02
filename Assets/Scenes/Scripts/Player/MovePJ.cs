@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Security.Cryptography;
+using UnityEngine;
 
 public class MovePJ : MonoBehaviour
 {
     public float _velocidadCaminar;
     public AudioClip movimientoSound; // Sonido de movimiento del personaje
+    public int Keys = 0;
+    public GameObject door;
 
     private SpriteRenderer _spriteRendererPersonaje;
     private Animator animator;
@@ -106,6 +109,22 @@ public class MovePJ : MonoBehaviour
         else if (!isMoving && audioSource.isPlaying)
         {
             audioSource.Stop();
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Key"))
+        {
+            Keys++;
+            Debug.Log("Llavesactuales: " + Keys);
+        }
+
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            if (Keys > 0)
+            {
+                Destroy(door);
+            }
         }
     }
 }

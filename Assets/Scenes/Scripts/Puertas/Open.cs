@@ -9,10 +9,11 @@ public class Open : MonoBehaviour
     public GameObject Door2;
     public GameObject player;
     public GameObject Area;
+    public GameObject MusicaJuego;
     private List<GameObject> enemies = new List<GameObject>();
     [SerializeField] private AudioClip abrir;
     [SerializeField] private AudioClip cerrar;
-    [SerializeField] private AudioClip musicaNormal;
+
     [SerializeField] private AudioClip musicaBatalla;
     private AudioSource ambienteAudioSource; // Para la m?sica de ambiente
     private AudioSource batallaAudioSource; // Para la m?sica de batalla
@@ -25,8 +26,7 @@ public class Open : MonoBehaviour
         triggerCollider = GetComponent<Collider2D>(); // Obtener el collider del trigger
 
         // A?adir dos componentes AudioSource para reproducir la m?sica de ambiente y la m?sica de batalla
-        ambienteAudioSource = gameObject.AddComponent<AudioSource>();
-        ambienteAudioSource.clip = musicaNormal;
+      
         batallaAudioSource = gameObject.AddComponent<AudioSource>();
         batallaAudioSource.clip = musicaBatalla;
     }
@@ -40,10 +40,15 @@ public class Open : MonoBehaviour
             OpenDoors();
 
             // Detener la m?sica de batalla si est? sonando
-            batallaAudioSource.Stop();
+            batallaAudioSource.Play();
             // Reproducir la m?sica de ambiente si no est? sonando
-            if (!ambienteAudioSource.isPlaying)
-                ambienteAudioSource.Play();
+            //if (!ambienteAudioSource.isPlaying)
+            //  ambienteAudioSource.Play();
+            // Desactivar el GameObject que controla la música del juego
+            if (MusicaJuego != null)
+            {
+                MusicaJuego.SetActive(false);
+            }
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -63,10 +68,15 @@ public class Open : MonoBehaviour
                 CloseDoors();
 
                 // Detener la m?sica de ambiente si est? sonando
-                ambienteAudioSource.Stop();
+               // ambienteAudioSource.Stop();
                 // Reproducir la m?sica de batalla si no est? sonando
-                if (!batallaAudioSource.isPlaying)
-                    batallaAudioSource.Play();
+                if (batallaAudioSource.isPlaying)
+                    batallaAudioSource.Stop();
+                // Activar el GameObject que controla la música del juego
+                if (MusicaJuego != null)
+                {
+                    MusicaJuego.SetActive(true);
+                }
             }
         }
     }
