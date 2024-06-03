@@ -6,16 +6,15 @@ public class Akey : MonoBehaviour
 {
     public GameObject key;
     public GameObject Player;
-    public string playername;
+    public string playername; 
     public GameObject door;
     [SerializeField] private AudioClip colectar1; 
-    // Start is called before the first frame update
+
     void Start()
     {
         playername = Player.name;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
