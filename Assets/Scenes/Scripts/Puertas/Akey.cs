@@ -12,7 +12,7 @@ public class Akey : MonoBehaviour
 
     void Start()
     {
-        movePJ = Player.GetComponent<MovePJ>();
+   
     }
 
     void Update()
@@ -20,14 +20,4 @@ public class Akey : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.gameObject == Player)
-        {
-            ControladorSonido.Instance.EjecutadorDeSonido(colectar1);
-            movePJ.Keys++;
-            Destroy(key);
-            Debug.Log("Llave recogida. Llaves actuales: " + movePJ.Keys);
-        }
-    }
 }
