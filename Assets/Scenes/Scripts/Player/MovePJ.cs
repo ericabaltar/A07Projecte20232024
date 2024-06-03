@@ -116,15 +116,19 @@ public class MovePJ : MonoBehaviour
         if (collision.gameObject.CompareTag("Key"))
         {
             Keys++;
-            Debug.Log("Llavesactuales: " + Keys);
+            Debug.Log("Llaves actuales: " + Keys);
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("Door"))
         {
             if (Keys > 0)
             {
+                Keys--;
                 Destroy(door);
+                Debug.Log("Llave usada. Llaves restantes: " + Keys);
             }
         }
     }
 }
+
